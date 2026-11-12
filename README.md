@@ -15,7 +15,7 @@
 
 ## 下载发行版
 
-适用于 Windows 10 / 11 的 x64 电脑。到 [Releases](https://github.com/Hirokimeji/MahjongCoach/releases) 下载 **MahjongCoach-v0.2.1-win-x64.zip**。
+适用于 Windows 10 / 11 的 x64 电脑。到 [Releases](https://github.com/Hirokimeji/MahjongCoach/releases) 下载 **MahjongCoach-v0.2.2-win-x64.zip**。
 
 发行包内置 Python、PySide6、分析引擎、MAX 和 Live2D 播放依赖。解压完成后双击 **雀魂新手教练.exe**，即可打开界面。请将整个文件夹解压到可写目录，例如 `D:\Games\MahjongCoach`，并保留子文件夹。无需安装 Python、Go 或运行构建命令。
 

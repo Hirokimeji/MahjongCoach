@@ -159,6 +159,7 @@ class Hero(QWidget):
         row = QHBoxLayout()
         row.setSpacing(10)
         self.tile = label(role='face')
+        self.tile.setAlignment(Qt.AlignCenter)
         row.addWidget(self.tile)
         self.title = label(role='heroTitle')
         row.addWidget(self.title)
@@ -169,6 +170,14 @@ class Hero(QWidget):
         box.addWidget(self.copy)
         box.addWidget(self.alert)
         self.setMinimumHeight(184)
+
+    def set_tile(self, code):
+        self.tile.setVisible(bool(code))
+        if code:
+            pix = scaled_image(tile_path(code),40,self)
+            self.tile.setPixmap(pix)
+            size = pix.deviceIndependentSize().toSize()
+            self.tile.setFixedSize(size.width()+8,size.height()+8)
 
     def resizeEvent(self,event):
         width = self.width()

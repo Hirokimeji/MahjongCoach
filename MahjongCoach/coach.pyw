@@ -593,9 +593,7 @@ class Coach(QMainWindow):
         self.hero.copy.setText(v['reason'].replace('看截图示例','示例手牌'))
         self.hero.alert.setText(v['note'])
         self.hero.alert.setVisible(bool(v['note']))
-        self.hero.tile.setVisible(bool(v['tile']))
-        if v['tile']:
-            self.hero.tile.setPixmap(scaled_image(tile_path(v['tile']),40,self))
+        self.hero.set_tile(v['tile'])
         self.hand_grid.display(v['hand'],v['rates'],v['tile'],self.risk_threshold)
         self.hand_grid.setVisible(bool(v['hand']))
         self.risk.setText(v['risk_caption'] or '发牌后，每张手牌下会显示打出它的放铳风险。')
