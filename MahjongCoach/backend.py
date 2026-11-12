@@ -20,6 +20,7 @@ import tempfile
 import urllib.request
 
 import yaml
+from table_context import TableContext
 
 ROOT = Path(__file__).resolve().parent
 MAX_ROOT = ROOT.parent / 'MajsoulMax-Steam'
@@ -119,6 +120,7 @@ class Relay:
         self.events = queue.Queue(maxsize=128)
         self.lock = threading.Lock()
         self.sequence = 0
+        self.table = TableContext()
         self.latest = {'kind': 'connected', 'message': '已连接，等待新的一局。', 'time': int(time.time() * 1000)}
         self.stopping = threading.Event()
         self.engine = subprocess.Popen([str(ENGINE), '-majsoul', '-port', '12121'], cwd=ENGINE.parent,
@@ -135,6 +137,7 @@ class Relay:
     def snapshot(self):
         with self.lock:
             result = dict(self.latest)
+            result.update(self.table.values())
         result['service_running'] = not self.stopping.is_set()
         result['engine_running'] = self.engine.poll() is None
         if not result['engine_running']:
@@ -148,6 +151,8 @@ class Relay:
             self.latest = {'kind': 'error', 'message': message, 'time': int(time.time() * 1000)}
 
     def receive(self, data):
+        with self.lock:
+            self.table.update(data)
         # The helper repeats the riichi payment attached to a draw or call.
         # This receipt does not advance play or dismiss that action's buttons.
         if {'seat', 'score', 'liqibang'} <= data.keys() <= {

@@ -4,7 +4,68 @@ from dataclasses import dataclass
 
 SUITS = {'m': '万', 'p': '筒', 's': '索'}
 HONORS = ['东风', '南风', '西风', '北风', '白板', '发财', '红中']
-MODES = {'speed': '先胡牌', 'value': '做大牌', 'defence': '先防守'}
+MODES = {'speed': '先胡牌', 'value': '做大牌', 'defence': '先防守', 'avoid_last':'避四'}
+
+
+def avoid_last_plan(snapshot):
+    scores, seat = snapshot.get('scores'), snapshot.get('self_seat')
+    count = snapshot.get('players',4)
+    if (not isinstance(scores,list) or len(scores)!=count or type(seat) is not int
+            or not 0 <= seat < count or any(type(n) is not int for n in scores)):
+        return 'speed','点数信息不足，暂按牌效选牌，避末判断等待新的一局。',False
+    mine = scores[seat]
+    others = [n for i,n in enumerate(scores) if i!=seat]
+    tied = mine in others
+    rank = 1+sum(n>mine for n in others)
+    last = mine <= min(others)
+    gap = min(others)-mine if last else mine-min(others)
+    length = snapshot.get('match_rounds')
+    late = type(length) is int and snapshot.get('round',0)>=length-2
+    threatened = bool(snapshot.get('riichi_opponents')) or any(
+        (p.get('tenpai') or 0)>=35 for p in snapshot.get('opponents') or [])
+    forbidden = forbidden_discards(snapshot)
+    candidates = [c for c in snapshot.get('candidates') or []
+                  if c['tile'] in snapshot.get('hand',[]) and normalized(c['tile']) not in forbidden]
+    best = min(candidates,key=lambda c:(c['shanten'],-c['ukeire']),default={})
+    strong = (best.get('shanten')==0 and best.get('ukeire',0)>=4
+              and max(best.get('dama_point',0),best.get('riichi_point',0))>=3900)
+    standing = (f'当前并列第 {rank} 名（同点按危险侧处理）' if tied else f'当前第 {rank} 名')
+    if last:
+        mode = 'value' if late and gap>=8000 else 'speed'
+        aim = f'落后上一名 {gap:,} 点' if not tied else '与末位同点'
+        return mode,standing+'，'+aim+'。'+('后段需要提高打点争取追分。' if mode=='value' else '优先争取和牌脱离末位，控制无谓风险。'),False
+    protect = (late and gap>=8000) or (threatened and not strong)
+    mode = 'defence' if protect else 'speed'
+    note = ('后段已有分差，优先守住。' if late and gap>=8000 else '对手有威胁，当前手牌收益不足，优先防守。') if protect else '保留快速和牌机会，同时限制危险切牌。'
+    return mode,standing+f'，领先末位 {gap:,} 点。'+note,True
+
+
+def choose_avoid_last(snapshot):
+    mode, _, ahead = avoid_last_plan(snapshot)
+    if mode=='defence':
+        return choose(snapshot,'defence')
+    rates = snapshot.get('ron_risk') or {}
+    forbidden = forbidden_discards(snapshot)
+    candidates = [c for c in snapshot.get('candidates') or []
+                  if c['tile'] in snapshot['hand'] and normalized(c['tile']) not in forbidden]
+    if not candidates or not rates:
+        return choose(snapshot,mode)
+    # A risk budget limits offensive candidates. Missing estimates stay unknown.
+    budget = 3 if ahead else 8
+    pool = [c for c in candidates if rates.get(normalized(c['tile']),101)<=budget]
+    if pool:
+        nearest = min(c['shanten'] for c in candidates)
+        pool = [c for c in pool if c['shanten']<=nearest]
+    if pool:
+        return choose(dict(snapshot,candidates=pool),mode)
+    if ahead:
+        return choose(snapshot,'defence')
+    return choose(snapshot,mode)
+
+
+def forbidden_discards(snapshot):
+    return {normalized(t) for op in (snapshot.get('legal_operations') or {}).get('operation_list',[])
+            if op['type']==1 for group in op.get('combination') or [] for t in group.split('|')}
 
 
 def normalized(tile):
@@ -197,13 +258,11 @@ def special_advice(snapshot, ops, mode):
 
 
 def choose(snapshot, mode):
+    if mode=='avoid_last':
+        return choose_avoid_last(snapshot)
     hand = snapshot['hand']
     candidates = snapshot.get('candidates') or []
-    forbidden = set()
-    for action in (snapshot.get('legal_operations') or {}).get('operation_list', []):
-        if action['type'] == 1:
-            for group in action.get('combination') or []:
-                forbidden.update(normalized(t) for t in group.split('|'))
+    forbidden = forbidden_discards(snapshot)
     candidates = [c for c in candidates if normalized(c['tile']) not in forbidden and c['tile'] in hand]
     if not candidates:
         return None, None

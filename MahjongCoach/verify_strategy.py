@@ -203,7 +203,7 @@ def check_choices():
     candidates = [dict(tile='5z',shanten=0,ukeire=8,dama_point=1000),
                   dict(tile='4z',shanten=0,ukeire=3,dama_point=8000)]
     snap = dict(closed, hand=sample, candidates=candidates, ron_risk={'5z':6,'4z':4,'1m':0.1})
-    assert [choose(snap, m)[0] for m in MODES] == ['5z','4z','1m']
+    assert [choose(snap, m)[0] for m in MODES] == ['5z','4z','1m','5z']
     locked = dict(snap, legal_operations={'operation_list':[{'type':1,'combination':['1m|5z']}]})
     assert all(choose(locked, m)[0]=='4z' for m in MODES)
 

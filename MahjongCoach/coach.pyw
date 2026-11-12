@@ -150,6 +150,8 @@ class Coach(QMainWindow):
         monitor_layout.addWidget(self.monitor_waits)
         self.monitor_opponents = label(role='muted',wrap=True)
         monitor_layout.addWidget(self.monitor_opponents)
+        self.monitor_placement = label(role='route',wrap=True)
+        monitor_layout.addWidget(self.monitor_placement)
         whole.addWidget(self.monitor)
 
         split = QHBoxLayout()
@@ -569,10 +571,14 @@ class Coach(QMainWindow):
     def render(self,snapshot):
         self.latest = snapshot
         v = self.view = present(snapshot,self.strategy,self.risk_threshold)
+        self.monitor_placement.setText(v.get('placement',''))
+        self.monitor_placement.setVisible(bool(v.get('placement')))
         self.update_monitor(snapshot,v)
         self.render_opponents()
         for k,b in self.modes.items():
             b.setChecked(k==self.strategy)
+            if k=='avoid_last':
+                b.setText('避末' if snapshot.get('players')==3 else '避四')
         self.live.setChecked(not self.demo)
         self.preview.setChecked(self.demo)
         self.m_preview.setText('返回实时' if self.demo else '示例手牌')

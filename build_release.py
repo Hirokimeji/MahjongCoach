@@ -23,7 +23,7 @@ def main():
     parser.add_argument('--vendor',type=Path,required=True)
     parser.add_argument('--max-source',type=Path,required=True)
     args = parser.parse_args()
-    dest = ROOT/'dist/MahjongCoach-v0.1.0-win-x64'
+    dest = ROOT/'dist/MahjongCoach-v0.2.0-win-x64'
     if dest.exists():
         raise SystemExit('Output already exists. Use a fresh build directory.')
     app = dest/'MahjongCoach'
@@ -41,6 +41,9 @@ def main():
     shutil.copy2(args.max_zip,maxroot/args.max_zip.name)
     (dest/'sources').mkdir()
     shutil.copy2(args.max_source,dest/'sources'/args.max_source.name)
+    with zipfile.ZipFile(args.max_source) as source:
+        license_name = next(n for n in source.namelist() if n.endswith('/LICENSE'))
+        (maxroot/'LICENSE-MajsoulMax.txt').write_bytes(source.read(license_name))
     with zipfile.ZipFile(args.max_zip) as archive:
         archive.extractall(maxroot/'app')
     config = maxroot/'app/MajsoulMax/config/settings.yaml'
@@ -70,6 +73,7 @@ def main():
     shutil.copy2(ROOT/'README.md',dest/'README.md')
     shutil.copy2(ROOT/'README.md',app/'使用说明.md')
     shutil.copy2(ROOT/'THIRD_PARTY.md',dest/'THIRD_PARTY.md')
+    copytree(ROOT/'LICENSES',dest/'LICENSES')
     shutil.copy2(ROOT/'Clash-直连示例.yaml',dest/'Clash-直连示例.yaml')
     compiler = Path('C:/Windows/Microsoft.NET/Framework64/v4.0.30319/csc.exe')
     subprocess.run([str(compiler),'/nologo','/target:winexe','/platform:x64',

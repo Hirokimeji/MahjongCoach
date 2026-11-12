@@ -1,5 +1,5 @@
 """Chinese coaching text shared by the live view and the example."""
-from strategy import MODES, call_advice, choose, normalized, riichi_advice, risk_label, route_rank, routes, special_advice, tile_name
+from strategy import MODES, avoid_last_plan, call_advice, choose, normalized, riichi_advice, risk_label, route_rank, routes, special_advice, tile_name
 
 
 def forecast_text(snapshot, candidate=None):
@@ -72,7 +72,7 @@ def opponent_rows(snapshot, hand_only=True):
     return rows
 
 
-def present(snapshot, strategy='speed', risk_threshold=5):
+def _present(snapshot, strategy='speed', risk_threshold=5, selection=None, cautious=False):
     kind = snapshot.get('kind', 'connected')
     hand = snapshot.get('hand') or []
     active = kind in ('waiting', 'discard', 'riichi_locked', 'complete') and bool(hand)
@@ -123,14 +123,14 @@ def present(snapshot, strategy='speed', risk_threshold=5):
                       note=('牌面估算：' + score + '（未计本场、供托和额外番）') if score else '这手暂时无法估分，和牌后显示雀魂结算。')
         return result
     result['forecast'] = forecast_text(snapshot)
-    special = special_advice(snapshot, ops, strategy)
+    special = special_advice(snapshot, ops, 'defence' if cautious else strategy)
     if special and (special[0] or kind=='riichi_locked'):
         result.update(title=special[1], reason=special[2])
         return result
     if kind in ('complete', 'riichi_locked'):
         result.update(title='手牌已成形' if kind == 'complete' else '你已立直', reason='请留意游戏给出的和牌或其他合法操作。')
         return result
-    tile, candidate = choose(snapshot, strategy) if kind == 'discard' else (None, None)
+    tile, candidate = choose(snapshot, selection or strategy) if kind == 'discard' else (None, None)
     kept = hand.copy()
     if tile:
         kept.remove(tile)
@@ -157,7 +157,7 @@ def present(snapshot, strategy='speed', risk_threshold=5):
     result['alternatives'] = [c for c in snapshot.get('candidates', [])
                               if c['tile'] != tile and normalized(c['tile']) not in blocked][:3]
     step = shanten_text(candidate['shanten']) if candidate else '这步可能需要拆开已有的组合。'
-    if strategy == 'defence' and rates:
+    if (strategy == 'defence' or candidate is None) and rates:
         result['reason'] = f'在当前能估算的对手中，{name}的放铳估计最低（{risk_label(rates.get(normalized(tile)))}）。' + step
     elif strategy == 'value':
         points = max(candidate.get('riichi_point', 0), candidate.get('dama_point', 0))
@@ -187,7 +187,8 @@ def present(snapshot, strategy='speed', risk_threshold=5):
     else:
         result['detail'] = '这次以防守为先，引擎没有提供这张切牌的进张明细。'
     if 7 in ops and not snapshot.get('open_hand'):
-        advice, reason = riichi_advice(actions, tile, candidate, strategy, snapshot)
+        riichi_mode = 'defence' if cautious and candidate and candidate.get('dama_point') else strategy
+        advice, reason = riichi_advice(actions, tile, candidate, riichi_mode, snapshot)
         result.update(title=f'{advice} · 打{name}', reason=reason)
     if special:
         result['note'] = ' '.join(filter(None,(special[1]+'。'+special[2],result['note'])))
@@ -204,4 +205,16 @@ def present(snapshot, strategy='speed', risk_threshold=5):
         if safer and rates.get(normalized(safer), rate) < rate:
             warning += f'。想防守可打{tile_name(safer)}，约 {risk_label(rates[normalized(safer)])}'
         result['note'] = '  '.join(filter(None, (warning, result['note'])))
+    return result
+
+
+def present(snapshot, strategy='speed', risk_threshold=5):
+    if strategy != 'avoid_last':
+        return _present(snapshot,strategy,risk_threshold)
+    mode, explanation, ahead = avoid_last_plan(snapshot)
+    result = _present(snapshot,mode,risk_threshold,selection='avoid_last',cautious=ahead)
+    result['tag'] = '避末' if snapshot.get('players')==3 else MODES[strategy]
+    if result['hand']:
+        result['placement'] = explanation
+        result['note'] = '  '.join(filter(None,(explanation,result['note'])))
     return result
