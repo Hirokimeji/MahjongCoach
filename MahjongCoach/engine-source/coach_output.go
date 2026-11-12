@@ -20,6 +20,15 @@ type coachOperation struct {
 	} `json:"operation_list"`
 }
 
+type coachWaitHint struct {
+	Tile     string `json:"tile"`
+	Zhenting bool   `json:"zhenting"`
+	Infos    []struct {
+		Tile   string `json:"tile"`
+		HaveYi bool   `json:"haveyi"`
+	} `json:"infos"`
+}
+
 var coachCurrent *majsoulRoundData
 var coachEmitted bool
 var coachSequence int64
@@ -39,6 +48,28 @@ func coachImprovingTiles(hand, unseen []int) []map[string]interface{} {
 		hand[t]--
 	}
 	return waits
+}
+
+func coachShapeProfile(hand, unseen []int) map[string]interface{} {
+	count := util.CountOfTiles34(hand)
+	normal := util.CalculateShantenOfNormal(hand, count)
+	chiitoi := 99
+	if count == 13 {
+		chiitoi = util.CalculateShantenOfChiitoi(hand)
+	}
+	normalUkeire := 0
+	for tile, left := range unseen {
+		if left <= 0 || hand[tile] >= 4 {
+			continue
+		}
+		hand[tile]++
+		if util.CalculateShantenOfNormal(hand, count+1) < normal {
+			normalUkeire += left
+		}
+		hand[tile]--
+	}
+	return map[string]interface{}{"normal_shanten": normal, "chiitoi_shanten": chiitoi,
+		"normal_ukeire": normalUkeire}
 }
 
 func coachBegin(d *majsoulRoundData) {
@@ -63,6 +94,9 @@ func coachBase(kind string) map[string]interface{} {
 		result["riichi_opponents"] = reached
 		if d.msg != nil {
 			result["legal_operations"] = d.msg.Operation
+			if string(d.msg.Zhenting) == "true" {
+				result["current_furiten"] = true
+			}
 		}
 		if len(d.counts) == 34 && len(d.players) > 1 && util.CountOfTiles34(d.counts) > 0 {
 			p := d.newModelPlayerInfo()
@@ -84,7 +118,32 @@ func coachBase(kind string) map[string]interface{} {
 			if kind == "waiting" || kind == "discard" {
 				hand := append([]int(nil), p.HandTiles34...)
 				if util.CountOfTiles34(hand)%3 == 1 {
-					result["current_waits"] = coachImprovingTiles(hand, p.LeftTiles34)
+					current := coachImprovingTiles(hand, p.LeftTiles34)
+					result["current_waits"] = current
+					if util.CalculateShanten(hand) == 0 {
+						_, waits := util.CalculateShantenAndWaits13(hand, p.LeftTiles34)
+						if p.IsFuriten(waits) {
+							result["current_furiten"] = true
+						}
+						if p.IsNaki() {
+							probe := *p
+							probe.HandTiles34 = hand
+							scoring := false
+							for _, wait := range current {
+								t, _, _ := util.StrToTile34(wait["tile"].(string))
+								hand[t]++
+								probe.WinTile = t
+								hasYaku := util.CalcPoint(&probe).Point > 0
+								hand[t]--
+								wait["has_yaku"] = hasYaku
+								scoring = scoring || hasYaku
+							}
+							result["current_no_yaku"] = len(current) > 0 && !scoring
+						}
+					}
+					for key, value := range coachShapeProfile(hand, p.LeftTiles34) {
+						result[key] = value
+					}
 				} else if kind == "discard" {
 					byCut := map[string]interface{}{}
 					for t, count := range hand {
@@ -258,7 +317,11 @@ func coachCandidate(r *util.Hand14AnalysisResult, risk riskTable, p *model.Playe
 	a := r.Result13
 	waits := []map[string]interface{}{}
 	for _, tile := range a.Waits.AvailableTiles() {
-		waits = append(waits, map[string]interface{}{"tile": util.Mahjong[tile], "remaining": a.Waits[tile]})
+		wait := map[string]interface{}{"tile": util.Mahjong[tile], "remaining": a.Waits[tile]}
+		if a.Shanten == 0 && a.IsNaki {
+			wait["has_yaku"] = a.DamaWaits[tile] > 0
+		}
+		waits = append(waits, wait)
 	}
 	yakuIDs := []int{}
 	for y := range a.YakuTypes {
@@ -285,6 +348,46 @@ normalFiveFound:
 		"win_rate":    a.AvgAgariRate,
 		"open_tiles":  r.OpenTiles,
 	}
+	hand := append([]int(nil), p.HandTiles34...)
+	result["breaks_triplet"] = hand[r.DiscardTile] == 3
+	hand[r.DiscardTile]--
+	for key, value := range coachShapeProfile(hand, p.LeftTiles34) {
+		result[key] = value
+	}
+	if d := coachCurrent; a.Shanten == 0 && d != nil && d.msg.Operation != nil && d.msg.Operation.Seat == d.selfSeat {
+		hints := d.msg.Tingpais
+		if d.msg.Ju != nil {
+			hints = d.msg.Tingpais0
+		}
+		for _, hint := range hints {
+			t, _, err := util.StrToTile34(hint.Tile)
+			if err != nil || t != r.DiscardTile || len(hint.Infos) == 0 {
+				continue
+			}
+			result["furiten"] = 0
+			if hint.Zhenting {
+				result["furiten"] = 1
+			}
+			seen := map[int]bool{}
+			live := 0
+			for _, info := range hint.Infos {
+				w, _, err := util.StrToTile34(info.Tile)
+				if err == nil && w >= 0 && w < 34 && info.HaveYi && !seen[w] {
+					live += p.LeftTiles34[w]
+					seen[w] = true
+				}
+			}
+			result["dama_ukeire"] = live
+			result["part_wait"] = live > 0 && live < a.Waits.AllCount()
+			if a.IsNaki {
+				for _, wait := range waits {
+					w, _, _ := util.StrToTile34(wait["tile"].(string))
+					wait["has_yaku"] = seen[w]
+				}
+			}
+			break
+		}
+	}
 	if risk != nil {
 		result["risk"] = risk[r.DiscardTile]
 	}
@@ -295,9 +398,22 @@ func coachEmit14(p *model.PlayerInfo, shanten int, results, backwards util.Hand1
 	result := coachBase("discard")
 	result["hand"] = coachHand(p)
 	if shanten < 0 {
-		result["kind"] = "complete"
-		coachWrite(result)
-		return
+		discard, win := false, false
+		if d := coachCurrent; d != nil && d.msg.Operation != nil && d.msg.Operation.Seat == d.selfSeat {
+			for _, op := range d.msg.Operation.OperationList {
+				discard = discard || op.Type == 1
+				win = win || op.Type == 8 || op.Type == 9
+			}
+		}
+		if !discard || win {
+			result["kind"] = "complete"
+			coachWrite(result)
+			return
+		}
+		// Every cut from a complete shape returns to tenpai. The existing
+		// one-step-back search already contains precisely those discards.
+		shanten, results, backwards = 0, backwards, nil
+		result["win_unavailable"] = true
 	}
 	if len(results) == 0 {
 		result["kind"] = "waiting"

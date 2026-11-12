@@ -183,6 +183,36 @@ def simulate():
             added=send(dict(draw,tile='8s',operation=dict(seat=0,operation_list=[
                 dict(type=1),dict(type=6,combination=['5z'])])),41)
             assert present(added)['title']=='建议加杠白板',added
+            # A complete open shape with no win operation still needs a discard.
+            send({'seat_list':[987654321,0,0], 'is_game_start':False,
+                  'game_config':{'category':1,'mode':{'mode':11}}},42)
+            open_tiles = '0p 5p 7p 8p 3s 4s 5s 6s 7s 8s 2s 2s 7z'.split()
+            send(dict(setup, tiles=open_tiles, scores=[35000]*3),43)
+            send(dict(seat=2,tile='2s',is_liqi=False,moqie=True),44)
+            send(dict(seat=0,type=1,tiles=['2s']*3,froms=[0,0,2],
+                      operation=dict(seat=0,operation_list=[dict(type=1,combination=['2s'])])),45)
+            send(dict(seat=0,tile='7z',is_liqi=False,moqie=False),46)
+            blocked = send(dict(draw,tile='9p',tingpais=[dict(tile='8s',zhenting=True,
+                infos=[dict(tile=t,haveyi=False) for t in ('2s','5s','8s')])]),47)
+            assert blocked['kind']=='discard' and blocked['win_unavailable']
+            cut = next(c for c in blocked['candidates'] if c['tile']=='8s')
+            assert cut['furiten']==1 and cut['dama_ukeire']==0
+            assert cut['waits'] and all(w['has_yaku'] is False for w in cut['waits'])
+            for mode in MODES:
+                view = present(blocked, mode)
+                assert view['tile'] in blocked['hand'] and '没有和牌按钮' in view['note']
+            waiting = send(dict(seat=0,tile='8s',is_liqi=False,moqie=False,zhenting=True),471)
+            assert waiting['current_furiten'] and waiting['current_no_yaku']
+            assert '振听' in present(waiting)['note'] and '缺役' in present(waiting)['note']
+            # Equivalent-looking triplets can be worth keeping or breaking.
+            for seq, tiles, drawn, preserve in [
+                (48,'2m 3m 4m 2p 2p 7p 8p 9p 4s 5s 6s 1z 7z','2p',True),
+                (50,'1m 1m 2m 2m 2p 2p 3s 3s 4s 4s 5z 5z 6z','2p',False)]:
+                send({'seat_list':[987654321,0,0,0], 'is_game_start':False,
+                      'game_config':{'category':1,'mode':{'mode':1}}},seq*10,False)
+                send(dict(setup,tiles=tiles.split()),seq)
+                decision = send(dict(draw,tile=drawn),seq+1)
+                assert all((choose(decision,m)[0]!='2p')==preserve for m in ('speed','value','avoid_last')), decision
             return state
         finally:
             engine.terminate()
@@ -206,6 +236,15 @@ def check_choices():
     assert [choose(snap, m)[0] for m in MODES] == ['5z','4z','1m','5z']
     locked = dict(snap, legal_operations={'operation_list':[{'type':1,'combination':['1m|5z']}]})
     assert all(choose(locked, m)[0]=='4z' for m in MODES)
+    opened = dict(snap,open_hand=True,candidates=[
+        dict(tile='5z',shanten=0,ukeire=9,dama_ukeire=0,dama_point=0),
+        dict(tile='4z',shanten=0,ukeire=2,dama_ukeire=2,dama_point=1000)])
+    for mode in ('speed','value','avoid_last'):
+        assert choose(opened,mode)[0]=='4z'
+        unsafe = dict(opened,candidates=[dict(opened['candidates'][0],furiten=1,dama_ukeire=9),opened['candidates'][1]])
+        assert choose(unsafe,mode)[0]=='4z'
+        recovery = dict(opened,candidates=[opened['candidates'][0],dict(tile='4z',shanten=1,ukeire=8)])
+        assert choose(recovery,mode)[0]=='4z'
 
 
 if __name__ == '__main__':

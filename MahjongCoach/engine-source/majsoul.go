@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/fatih/color"
 	"github.com/EndlessCheng/mahjong-helper/util"
@@ -90,6 +91,9 @@ type majsoulMessage struct {
 	IsWliqi   *bool     `json:"is_wliqi"`
 	Moqie     *bool     `json:"moqie"`
 	Operation *coachOperation `json:"operation"`
+	Zhenting json.RawMessage `json:"zhenting"` // Live actions use a bool, replay records can use an array.
+	Tingpais []coachWaitHint `json:"tingpais"`
+	Tingpais0 []coachWaitHint `json:"tingpais0"`
 
 	// ActionChiPengGang || ActionAnGangAddGang
 	// 他家吃 {"seat":0,"type":0,"tiles":["2s","3s","4s"],"froms":[0,0,3],"zhenting":false}

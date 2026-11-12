@@ -1,5 +1,5 @@
 """Chinese coaching text shared by the live view and the example."""
-from strategy import MODES, avoid_last_plan, call_advice, choose, normalized, riichi_advice, risk_label, route_rank, routes, special_advice, tile_name
+from strategy import MODES, attack_ukeire, avoid_last_plan, call_advice, choose, normalized, riichi_advice, risk_label, route_rank, routes, special_advice, tile_name
 
 
 def forecast_text(snapshot, candidate=None):
@@ -128,14 +128,17 @@ def _present(snapshot, strategy='speed', risk_threshold=5, selection=None, cauti
         result.update(title=special[1], reason=special[2])
         return result
     if kind in ('complete', 'riichi_locked'):
-        result.update(title='手牌已成形' if kind == 'complete' else '你已立直', reason='请留意游戏给出的和牌或其他合法操作。')
+        result.update(title='当前没有和牌操作' if kind == 'complete' else '你已立直',
+                      reason='请按游戏当前亮起的操作继续。' if kind == 'complete' else '等待和牌张。')
+        if snapshot.get('current_furiten'):
+            result['note'] = '当前振听，不能荣和。'
         return result
     tile, candidate = choose(snapshot, selection or strategy) if kind == 'discard' else (None, None)
     kept = hand.copy()
     if tile:
         kept.remove(tile)
     hints = candidate.get('yaku', '') if candidate else ''
-    plans = sorted(routes(snapshot, kept, hints), key=lambda p: route_rank(p, strategy), reverse=True)
+    plans = sorted(routes(snapshot, kept, hints, analysis=candidate), key=lambda p: route_rank(p, strategy), reverse=True)
     result['routes'] = plans[:2]
     if not tile:
         result.update(title='这手可以从这里做起' if snapshot.get('own_discards') == 0 else '等下一次摸牌',
@@ -149,6 +152,13 @@ def _present(snapshot, strategy='speed', risk_threshold=5, selection=None, cauti
             result.update(title=special[1], reason=special[2])
         elif kind == 'discard' and 7 in ops:
             result.update(title='暂缓立直', reason='这次缺少切牌分析，请先查看游戏标出的立直候选牌。')
+        if snapshot.get('current_no_yaku') or snapshot.get('current_furiten'):
+            messages = []
+            if snapshot.get('current_furiten'):
+                messages.append('当前振听，不能荣和。')
+            if snapshot.get('current_no_yaku'):
+                messages.append('当前未见的待牌都缺役，下一巡优先换出有役的听口。')
+            result['note'] = ' '.join(messages)
         return result
     name = tile_name(tile)
     result.update(tile=tile, title='打 ' + name, mode='defence' if strategy == 'defence' else 'attack')
@@ -175,10 +185,23 @@ def _present(snapshot, strategy='speed', risk_threshold=5, selection=None, cauti
     alerts = []
     if snapshot.get('riichi_opponents'):
         alerts.append('、'.join(snapshot['riichi_opponents']) + '已立直')
-    if candidate and candidate.get('furiten', 0) > 0:
-        alerts.append('注意振听，可能只能自摸')
-    if candidate and candidate['shanten'] == 0 and candidate.get('open_hand') and not candidate.get('dama_point'):
-        alerts.append('可能无役，和牌以游戏提示为准')
+    if snapshot.get('win_unavailable'):
+        alerts.append('牌形已凑齐，本巡没有和牌按钮，仍需出牌。')
+    if candidate and candidate['shanten'] == 0:
+        if candidate.get('furiten'):
+            alerts.append('打出后振听，所有待牌都不能荣和。')
+        if candidate.get('open_hand') or snapshot.get('open_hand'):
+            scoring = attack_ukeire(snapshot, candidate)
+            if candidate['ukeire'] and not scoring:
+                alerts.append('当前待牌无役，通常自摸也不能和，接下来要换听或补役。')
+                if strategy != 'defence':
+                    result['reason'] = '这步只能保住听牌形。' + (plans[0].guide if plans else '下一次摸牌时再比较有役的换听。')
+            elif scoring < candidate['ukeire']:
+                alerts.append(f'部分待牌无役，未见的待牌中只有 {scoring} 张有役。')
+        elif not candidate.get('dama_ukeire', candidate.get('dama_point')) and candidate['ukeire']:
+            alerts.append('默听缺役；保持门清可以靠自摸得役。')
+    elif candidate and candidate.get('furiten', 0) > 0:
+        alerts.append('部分后续进张可能形成振听。')
     result['note'] = ' · '.join(alerts)
     result['forecast'] = forecast_text(snapshot,candidate)
     if candidate:

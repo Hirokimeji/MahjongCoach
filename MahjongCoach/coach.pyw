@@ -477,7 +477,8 @@ class Coach(QMainWindow):
         self.mobile_only.setVisible(compact)
         self.small.setText('大窗' if compact else '小窗')
         self.bottom.setDirection(QBoxLayout.TopToBottom if compact else QBoxLayout.LeftToRight)
-        self.hero.setMinimumHeight(164 if compact else 192)
+        self.hero.base_height = 164 if compact else 192
+        self.hero.fit_content()
         self.content.setContentsMargins(10 if compact else 18,12,10 if compact else 18,12)
 
     def update_window_shape(self):
@@ -666,10 +667,14 @@ class Coach(QMainWindow):
         self.chance.setText(v['forecast'])
         self.chance.setVisible(bool(v['forecast']))
         remaining = {w['tile']:w['remaining'] for w in v['waits']}
-        self.wait_grid.display(list(remaining), remaining=remaining)
+        no_yaku = {w['tile'] for w in v['waits'] if w.get('has_yaku') is False}
+        self.wait_grid.display(list(remaining), remaining=remaining, no_yaku=no_yaku)
         self.wait_grid.setVisible(bool(v['waits']))
         unseen = sum(w['remaining'] for w in v['waits'])
         self.wait_caption.setText(f'{len(v["waits"])} 种有效牌  ·  共 {unseen} 张未见' if v['waits'] else '有有效进张时，牌面会显示在这里。')
+        if no_yaku:
+            scoring = sum(n for tile,n in remaining.items() if tile not in no_yaku)
+            self.wait_caption.setText(f'{len(remaining)} 种待牌，{unseen} 张未见，其中 {scoring} 张有役。')
 
     def details(self):
         v = self.view

@@ -50,6 +50,10 @@ def check():
             assert hero.tile.height()>=pix.height()+4
             bottom = hero.tile.mapTo(hero,hero.tile.rect().bottomRight())
             assert hero.rect().contains(bottom)
+            assert bottom.y() < hero.copy.y()
+            assert hero.copy.height() >= hero.copy.heightForWidth(hero.copy.width())
+            assert hero.copy.geometry().bottom() < hero.alert.y()
+            assert hero.alert.geometry().bottom() < hero.height()
     banner_window.close()
     print('PASS: visible tiles, repeated refresh, hidden-to-visible and responsive rows')
 

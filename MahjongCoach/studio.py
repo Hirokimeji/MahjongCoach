@@ -161,15 +161,14 @@ class Hero(QWidget):
         self.tile = label(role='face')
         self.tile.setAlignment(Qt.AlignCenter)
         row.addWidget(self.tile)
-        self.title = label(role='heroTitle')
-        row.addWidget(self.title)
-        row.addStretch()
+        self.title = label(role='heroTitle', wrap=True)
+        row.addWidget(self.title,1)
         box.addLayout(row)
         self.copy = label(role='heroCopy', wrap=True)
         self.alert = label(role='alert', wrap=True)
         box.addWidget(self.copy)
         box.addWidget(self.alert)
-        self.setMinimumHeight(184)
+        self.base_height = 184
 
     def set_tile(self, code):
         self.tile.setVisible(bool(code))
@@ -178,11 +177,28 @@ class Hero(QWidget):
             self.tile.setPixmap(pix)
             size = pix.deviceIndependentSize().toSize()
             self.tile.setFixedSize(size.width()+8,size.height()+8)
+        self.fit_content()
+
+    def fit_content(self):
+        width = self.width()
+        layout = self.layout()
+        margins = layout.contentsMargins()
+        available = max(1, width - margins.left() - margins.right())
+        text_width = min(available, max(230, int(width * (.76 if width<550 else .58))))
+        rows = [self.eyebrow.sizeHint().height()]
+        tile_visible = not self.tile.isHidden()
+        title_width = max(1, available - (self.tile.width()+10 if tile_visible else 0))
+        rows.append(max(self.title.heightForWidth(title_width), self.tile.height() if tile_visible else 0))
+        for line in (self.copy, self.alert):
+            line.setMaximumWidth(text_width)
+            if not line.isHidden():
+                rows.append(line.heightForWidth(text_width))
+        self.setMinimumHeight(max(self.base_height, margins.top()+margins.bottom()
+                                  + sum(rows) + layout.spacing()*len(rows)))
 
     def resizeEvent(self,event):
-        width = self.width()
-        self.copy.setMaximumWidth(max(230, int(width * (.76 if width<550 else .58))))
-        self.alert.setMaximumWidth(self.copy.maximumWidth())
+        if event.size().width() != event.oldSize().width():
+            self.fit_content()
         super().resizeEvent(event)
 
     def paintEvent(self,event):
@@ -215,7 +231,7 @@ class TileGrid(QWidget):
         self.items = []
         self.columns = 0
 
-    def display(self, tiles, rates=None, selected=None, threshold=5, remaining=None):
+    def display(self, tiles, rates=None, selected=None, threshold=5, remaining=None, no_yaku=()):
         for tile in self.items:
             self.grid.removeWidget(tile)
             tile.hide()
@@ -237,7 +253,7 @@ class TileGrid(QWidget):
             rate = rates.get(normalized(code)) if rates is not None else None
             caption = risk_label(rate) if rates is not None else tile_name(code)
             if remaining is not None:
-                caption = f'{remaining[code]} 张'
+                caption = '无役' if code in no_yaku else f'{remaining[code]} 张'
             info = label(caption, 'riskHigh' if rate is not None and rate>=threshold else 'risk')
             info.setAlignment(Qt.AlignCenter)
             col.addWidget(info)

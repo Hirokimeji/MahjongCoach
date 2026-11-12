@@ -65,13 +65,14 @@ def _avoid_last_decision(snapshot):
         tile, candidate = choose(snapshot,mode) if snapshot.get('hand') else (None,None)
         return mode,standing+'等待可用切牌分析，继续按当前牌形判断。',ahead,tile,candidate
 
+    candidates = attacking_choices(snapshot, candidates)
     nearest = min(c['shanten'] for c in candidates)
     forward = [c for c in candidates if c['shanten']==nearest]
     preferred, _ = choose(dict(snapshot,candidates=forward),mode)
     def utility(candidate):
         rate = rates.get(normalized(candidate['tile']))
         penalty = (rate/budget(candidate))**1.4 if rate is not None else 1
-        efficiency = min(candidate['ukeire'],40)/12
+        efficiency = min(attack_ukeire(snapshot, candidate),40)/12
         points = max(candidate.get('dama_point',0),candidate.get('riichi_point',0))
         value = min(points,24000)/8000 if mode=='value' and nearest==0 else 0
         return efficiency+value-penalty, candidate['tile']==preferred
@@ -117,6 +118,32 @@ def normalized(tile):
     return '5' + tile[1:] if tile.startswith('0') else tile
 
 
+def riichi_available(snapshot, tile):
+    legal = snapshot.get('legal_operations') or {}
+    return legal.get('seat') == snapshot.get('self_seat') and any(
+        op['type'] == 7 and tile in group.split('|')
+        for op in legal.get('operation_list', []) for group in op.get('combination') or [])
+
+
+def attack_ukeire(snapshot, c):
+    if c['shanten'] == 0 and (snapshot.get('open_hand') or c.get('open_hand')):
+        return c.get('dama_ukeire', c['ukeire'] if c.get('dama_point') else 0)
+    return c['ukeire']
+
+
+def attacking_choices(snapshot, candidates):
+    # An open hand with no scoring waits may have to go back one step to gain a yaku.
+    useful = [c for c in candidates if attack_ukeire(snapshot, c) > 0]
+    pool = useful or candidates
+    def can_ron(c):
+        if c['shanten'] != 0 or c.get('furiten') or not c['ukeire']:
+            return False
+        return c.get('dama_ukeire', c.get('dama_point', 0)) > 0 or riichi_available(snapshot, c['tile'])
+    if any(can_ron(c) for c in pool):
+        return [c for c in pool if c['shanten'] != 0 or can_ron(c)]
+    return pool
+
+
 def tile_name(tile):
     if not tile:
         return '等待提示'
@@ -134,7 +161,7 @@ class Route:
     han: int
 
 
-def routes(snapshot, hand, hints=''):
+def routes(snapshot, hand, hints='', analysis=None):
     fixed = snapshot.get('melds') or []
     exposed = [normalized(t) for group in fixed for t in group]
     counts = Counter(map(normalized, hand))
@@ -156,7 +183,9 @@ def routes(snapshot, hand, hints=''):
         text = f'已有三张{name}，保住这组就有役，其他牌可灵活吃碰。' if held >= 3 else f'留住这对{name}。再摸到一张或碰成三张，就能靠它有役。'
         plans.append(Route('役牌 · ' + name, text, 13 if held >= 3 else 9, value))
     pairs = sum(n >= 2 for n in counts.values())
-    if not fixed and pairs >= 4:
+    shape = analysis if analysis is not None else snapshot
+    seven_competitive = shape.get('chiitoi_shanten',99) <= shape.get('normal_shanten',99)
+    if not fixed and pairs >= 4 and seven_competitive:
         plans.append(Route('七对子', f'已有 {pairs} 种对子，凑齐七种就能胡。保留对子，全程不吃碰。', pairs + 4, 2))
     triplets = sum(n >= 3 for n in counts.values()) + len(fixed)
     spare_pairs = sum(n == 2 for n in counts.values())
@@ -228,7 +257,9 @@ def call_advice(snapshot, actions, mode):
                 melds = (snapshot.get('melds') or []) + [pair + [offered]]
                 plans = routes(dict(snapshot, melds=melds, open_hand=True), kept)
                 # A distant flush or an uncompleted pair alone is a weak reason to open.
-                plans = [p for p in plans if p.fit >= 10]
+                # Before tenpai, open for a secured yaku or a route at most one
+                # replacement away. Two or three floating outsiders are expensive.
+                plans = [p for p in plans if p.fit >= (11 if p.name=='清一色' else 10)]
                 ready = c['shanten'] == 0
                 if ready and (not c['dama_point'] or c['furiten']) or not ready and not plans:
                     continue
@@ -261,7 +292,7 @@ def riichi_advice(actions, tile, candidate, mode, snapshot):
         return '暂不立直', '默听能保留换牌防守的余地。'
     if mode == 'speed' and candidate.get('dama_point', 0) >= 5200 and candidate.get('dama_ukeire') == candidate['ukeire']:
         return '建议默听', '等的牌已有役，默听打点也足够，可以悄悄等别人打出。'
-    if snapshot.get('riichi_opponents') and candidate['ukeire'] <= 2:
+    if snapshot.get('riichi_opponents') and candidate['ukeire'] <= 2 and candidate.get('dama_ukeire',candidate.get('dama_point')):
         return '暂不立直', '已有对手立直，这手至多还剩两张未见的等牌，先留退路。'
     reason = '立直本身就有役，可以等别人打出和牌张。' if not candidate.get('dama_point') else '立直能加番，这手还有机会提高打点。'
     return '建议立直', reason
@@ -313,8 +344,10 @@ def choose(snapshot, mode):
         return None, None
     rates = snapshot.get('ron_risk') or {}
     def efficiency(c):
-        return (-c['shanten'], c['ukeire'], c.get('speed', 0), not c.get('discard_dora'))
-    fast = max(candidates, key=efficiency)
+        breaks = c.get('breaks_triplet', sum(normalized(t)==normalized(c['tile']) for t in hand)==3)
+        return (-c['shanten'], attack_ukeire(snapshot, c), -c.get('normal_shanten',99),
+                c.get('normal_ukeire',0), not breaks,
+                c.get('speed',0), not c.get('discard_dora'))
     if mode == 'defence' and rates:
         # Include every legal tile, even if cutting it dismantles a finished set.
         ranked = {normalized(c['tile']): c for c in candidates}
@@ -325,13 +358,15 @@ def choose(snapshot, mode):
         if legal:
             tile = max(legal, key=safety)
             return tile, ranked.get(normalized(tile))
+    candidates = attacking_choices(snapshot, candidates)
+    fast = max(candidates, key=efficiency)
     if mode != 'value':
         return fast['tile'], fast
 
     def value(c):
         kept = hand.copy()
         kept.remove(c['tile'])
-        plans = routes(snapshot, kept, c.get('yaku', ''))
+        plans = routes(snapshot, kept, c.get('yaku', ''), analysis=c)
         fit = max((route_rank(p, 'value') for p in plans), default=0)
         # At tenpai use the engine's point estimate; earlier, use feasible routes.
         points = max(c.get('riichi_point', 0), c.get('dama_point', 0))
