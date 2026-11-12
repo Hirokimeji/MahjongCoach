@@ -44,6 +44,22 @@ def check():
     assert avoid_last_plan(unknown_length)[0]=='speed'
     sanma = dict(chase,players=3,scores=[10000,35000,25000])
     assert present(sanma,'avoid_last')['tag']=='避末'
+    # Same-shanten alternatives: a secured yaku is worth a few live tiles,
+    # but cannot override a large speed gain, actual tenpai, or real danger.
+    for honor in ('5z','6z','7z','1z','3z'):
+        split = dict(tile=honor,shanten=2,ukeire=14,normal_shanten=4,normal_ukeire=60)
+        keep = dict(tile='9p',shanten=2,ukeire=11,normal_shanten=3,normal_ukeire=51)
+        pair_race = dict(sanma,hand=[honor]*3+['9p'],round_wind='1z',seat_wind='3z',
+                         candidates=[split,keep],ron_risk={honor:0.05,'9p':0.1},
+                         riichi_opponents=[],opponents=[])
+        assert choose(pair_race,'avoid_last')[0]=='9p'
+        for faster in (dict(split,ukeire=25),dict(split,shanten=0,ukeire=2,dama_point=1600)):
+            assert choose(dict(pair_race,candidates=[keep,faster]),'avoid_last')[0]==honor
+        assert choose(dict(pair_race,ron_risk={honor:0,'9p':12}),'avoid_last')[0]==honor
+        assert choose(dict(pair_race,ron_risk={honor:0,'9p':12}),'defence')[0]==honor
+        assert choose(dict(pair_race,candidates=[split,dict(keep,normal_shanten=4)]),'avoid_last')[0]==honor
+        assert choose(dict(pair_race,candidates=[split,dict(keep,normal_ukeire=0)]),'avoid_last')[0]==honor
+        assert choose(dict(pair_race,legal_operations=dict(operation_list=[dict(type=1,combination=['9p'])])),'avoid_last')[0]==honor
     # Operation priority and kuikae remain in force under the new strategy.
     win = dict(base,legal_operations=dict(seat=0,operation_list=[dict(type=9)]))
     assert present(win,'avoid_last')['title']=='建议荣和'

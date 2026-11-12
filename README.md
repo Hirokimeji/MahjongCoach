@@ -15,9 +15,9 @@
 
 ## 下载发行版
 
-适用于 Windows 10 / 11 的 x64 电脑。首次安装请解压 [v0.3.0 完整便携版](https://github.com/Hirokimeji/MahjongCoach/releases/tag/v0.3.0)，然后安装 [v0.3.1 教练更新包](https://github.com/Hirokimeji/MahjongCoach/releases/tag/v0.3.1)。
+适用于 Windows 10 / 11 的 x64 电脑。首次安装请解压 [v0.3.0 完整便携版](https://github.com/Hirokimeji/MahjongCoach/releases/tag/v0.3.0)，然后安装 [v0.3.2 教练累积更新包](https://github.com/Hirokimeji/MahjongCoach/releases/tag/v0.3.2)。
 
-已有 v0.3.0 的用户可直接更新。结束对局，点击「停止并恢复」并关闭教练，将更新包中的 `MahjongCoach` 文件夹复制到「雀魂新手教练.exe」所在目录，选择合并文件夹并替换同名文件，然后重新打开教练。
+已有 v0.3.0 或 v0.3.1 的用户可直接更新。结束对局，点击「停止并恢复」并关闭教练，将更新包中的 `MahjongCoach` 文件夹复制到「雀魂新手教练.exe」所在目录，选择合并文件夹并替换同名文件，然后重新打开教练。
 
 发行包内置 Python、PySide6、分析引擎、MAX 和 Live2D 播放依赖。解压完成后双击 **雀魂新手教练.exe**，即可打开界面。请将整个文件夹解压到可写目录，例如 `D:\Games\MahjongCoach`，并保留子文件夹。无需安装 Python、Go 或运行构建命令。
 

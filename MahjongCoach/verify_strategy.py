@@ -213,6 +213,22 @@ def simulate():
                 send(dict(setup,tiles=tiles.split()),seq)
                 decision = send(dict(draw,tile=drawn),seq+1)
                 assert all((choose(decision,m)[0]!='2p')==preserve for m in ('speed','value','avoid_last')), decision
+            send(dict(seat_list=[0,987654321,0],is_game_start=False,
+                      game_config=dict(category=1,mode=dict(mode=11))),52,False)
+            tiles = '2p 2p 4p 9p 3s 3s 5s 3z 4z 5z 7z 7z 7z'.split()
+            standings = [57200,34800,13000]
+            send(dict(setup,ju=2,tiles=tiles,scores=standings,doras=['4p'],left_tile_count=55),53)
+            for seq, seat, tile in [(54,2,'2p'),(55,0,'9m')]:
+                send(dict(seat=seat,tile=tile,is_liqi=False,is_wliqi=False,moqie=True),seq)
+            decision = send(dict(draw,seat=1,tile='4z',left_tile_count=52,
+                                 operation=dict(seat=1,operation_list=[dict(type=1),dict(type=11)])),56)
+            decision.update(scores=standings,match_rounds=4)
+            cuts = {c['tile']:c for c in decision['candidates']}
+            assert cuts['7z']['ukeire']==14 and cuts['9p']['ukeire']==11
+            result = present(decision,'avoid_last')
+            assert result['tile'] != '7z' and '保留红中刻子' in result['note']
+            assert cuts[result['tile']]['normal_shanten']==3 and cuts['7z']['normal_shanten']==4
+            print('Sanma yakuhai replay:',result['tile'],cuts[result['tile']]['ukeire'],'live tiles')
             return state
         finally:
             engine.terminate()

@@ -69,10 +69,24 @@ def _avoid_last_decision(snapshot):
     nearest = min(c['shanten'] for c in candidates)
     forward = [c for c in candidates if c['shanten']==nearest]
     preferred, _ = choose(dict(snapshot,candidates=forward),mode)
+    honors = {'5z', '6z', '7z', snapshot.get('round_wind'), snapshot.get('seat_wind')}
+    counts = Counter(snapshot['hand'])
+    role_cuts = [c for c in forward if nearest > 0 and c['tile'] in honors and counts[c['tile']] == 3]
+    def compared_triplet(candidate):
+        standard = candidate.get('normal_shanten', 99)
+        if (candidate in role_cuts or standard > nearest + 1 or not candidate.get('normal_ukeire')):
+            return None
+        return max((c for c in role_cuts if standard < c.get('normal_shanten', -1)),
+                   key=lambda c:c['ukeire'], default=None)
     def utility(candidate):
         rate = rates.get(normalized(candidate['tile']))
         penalty = (rate/budget(candidate))**1.4 if rate is not None else 1
-        efficiency = min(attack_ukeire(snapshot, candidate),40)/12
+        outs = attack_ukeire(snapshot, candidate)
+        # A secured yaku and a closer standard route can justify giving up a
+        # few immediate outs. Keep their value bounded for narrow hands.
+        alternative = compared_triplet(candidate)
+        credit = min(4, alternative['ukeire']/4) if alternative else 0
+        efficiency = min(outs + credit,40)/12
         points = max(candidate.get('dama_point',0),candidate.get('riichi_point',0))
         value = min(points,24000)/8000 if mode=='value' and nearest==0 else 0
         return efficiency+value-penalty, candidate['tile']==preferred
@@ -95,7 +109,13 @@ def _avoid_last_decision(snapshot):
     shape = '已听牌' if nearest==0 else f'{nearest} 向听'
     risk_text = f'这步风险约 {risk_label(risk)}。' if risk is not None else '这步风险尚待估算。'
     reason = f'{shape}，{selected["ukeire"]} 张有效牌未见。'+risk_text
-    reason += '继续保留和牌机会。' if mode=='speed' else '在保留进张的前提下争取追分打点。'
+    alternative = compared_triplet(selected)
+    if alternative:
+        honor = tile_name(alternative['tile'])
+        reason += (f'保留{honor}刻子，普通和牌已有役。拆{honor}有 {alternative["ukeire"]} 张进张，'
+                   f'但普通牌形会从 {selected["normal_shanten"]} 向听退到 {alternative["normal_shanten"]} 向听。')
+    else:
+        reason += '继续保留和牌机会。' if mode=='speed' else '在保留进张的前提下争取追分打点。'
     return mode,standing+reason,ahead,tile,selected
 
 
