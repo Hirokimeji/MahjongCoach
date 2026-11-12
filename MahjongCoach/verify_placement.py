@@ -20,6 +20,13 @@ def check():
         ron_risk={'1m':2,'2m':0,'3m':0.1})
     assert choose(good,'avoid_last')[0]=='1m'
     assert avoid_last_plan(good)[0]=='speed'
+    push = dict(good,ron_risk={'1m':4.2,'2m':0,'3m':1})
+    assert choose(dict(push,wall_remaining=48),'avoid_last')[0]=='1m'
+    assert choose(dict(push,wall_remaining=8),'avoid_last')[0]=='2m'
+    fold = dict(good,hand=['1m','2m','2m'],ron_risk={'1m':0,'2m':0},
+                candidates=[dict(tile='1m',shanten=2,ukeire=24),dict(tile='2m',shanten=2,ukeire=8)])
+    assert choose(fold,'defence')[0]=='2m'
+    assert choose(dict(fold,riichi_opponents=[]),'defence')[0]=='1m'
     cheap_ready = dict(good,candidates=[
         dict(tile='1m',shanten=0,ukeire=8,dama_point=1000,riichi_point=2000)],
         ron_risk={'1m':5,'2m':0,'3m':0.1})

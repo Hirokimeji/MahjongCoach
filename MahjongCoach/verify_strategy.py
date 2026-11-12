@@ -12,7 +12,7 @@ import time
 import urllib.request
 
 from presenter import opponent_rows, present
-from strategy import MODES, choose, normalized, routes
+from strategy import MODES, call_advice, choose, normalized, routes
 
 ROOT = Path(__file__).resolve().parent
 
@@ -263,8 +263,43 @@ def check_choices():
         assert choose(recovery,mode)[0]=='4z'
 
 
+def check_shape_and_pressure():
+    # Two published 魔女「初期牌效率：搭子」 hands and their suit rotations.
+    rotation = str.maketrans('mps','psm')
+    for hand, discard in [('12567m55999p2478s','1m'),('24789m35888p3478s','2m')]:
+        for _ in range(3):
+            output = subprocess.check_output([str(ROOT/'engine/mahjong-coach-engine.exe'), hand],
+                                             encoding='utf-8', errors='replace')
+            state = json.loads(next(line.split('COACH_JSON:',1)[1] for line in output.splitlines()
+                                    if 'COACH_JSON:' in line))
+            for mode in ('speed','value','avoid_last'):
+                assert choose(state,mode)[0] == discard, (hand,mode)
+            hand, discard = hand.translate(rotation), discard.translate(rotation)
+
+    def decision(a,b,mode='speed',**extra):
+        return choose(dict(hand=['1m','9p'],candidates=[dict(tile='1m',**a),dict(tile='9p',**b)],**extra),mode)[0]
+    wide_now = dict(shanten=2,ukeire=15,next_ukeire=5,improved_ukeire=15)
+    develops = dict(shanten=2,ukeire=14,next_ukeire=20,improved_ukeire=17)
+    assert decision(wide_now,develops)=='9p'
+    assert decision(dict(wide_now,ukeire=25),develops)=='1m'
+    assert decision(dict(wide_now,shanten=1),dict(develops,shanten=1))=='1m'
+    narrow = dict(shanten=0,ukeire=2,dama_point=8000,win_rate=12)
+    wide = dict(shanten=0,ukeire=7,dama_point=3900,win_rate=42)
+    assert decision(narrow,wide,'value')=='9p'
+    assert decision(narrow,wide,'value',players=3)=='1m'
+    assert decision(narrow,dict(wide,win_rate=None),'value')=='1m'
+    op = dict(type=3,combination=['5z|5z'])
+    call = dict(open_hand=False,offered_tile='5z',shanten=2,hand=['5z','5z','9p','4m'],
+                call_choices=[dict(pair=['5z','5z'],discard='9p',shanten=1,ukeire=14,
+                                   dama_point=0,furiten=0,part_wait=False)],ron_risk={'9p':7})
+    assert call_advice(call,[op],'speed')[0]=='建议碰白板'
+    assert '跳过' in call_advice(dict(call,riichi_opponents=['下家']),[op],'speed')[0]
+    print('PASS: six shape examples, future efficiency, scoring waits and post-call risk')
+
+
 if __name__ == '__main__':
     check_choices()
+    check_shape_and_pressure()
     demo = simulate()
     if '--save-demo' in sys.argv:
         for key in ('sequence','source_sequence','time'):

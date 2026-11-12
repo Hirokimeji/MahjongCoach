@@ -41,8 +41,8 @@ def _avoid_last_decision(snapshot):
                   sum((p.get('tenpai') or 0)>=45 for p in opponents))
 
     def budget(candidate):
-        shanten, waits = candidate['shanten'], candidate['ukeire']
-        points = max(candidate.get('dama_point',0),candidate.get('riichi_point',0))
+        shanten, waits = candidate['shanten'], attack_ukeire(snapshot, candidate)
+        points = available_points(snapshot, candidate)
         if shanten==0:
             limit = (9 if waits>=4 else 6)+min(4,points/3900*2)
         elif shanten==1:
@@ -57,6 +57,9 @@ def _avoid_last_decision(snapshot):
             limit *= 1.25
         if threats>=2:
             limit *= 0.8
+        wall = snapshot.get('wall_remaining')
+        if threats and shanten > 0 and isinstance(wall, int) and wall <= count * 3:
+            limit *= 0.75
         return limit
 
     if not candidates:
@@ -81,13 +84,13 @@ def _avoid_last_decision(snapshot):
     def utility(candidate):
         rate = rates.get(normalized(candidate['tile']))
         penalty = (rate/budget(candidate))**1.4 if rate is not None else 1
-        outs = attack_ukeire(snapshot, candidate)
+        outs = progress_score(snapshot, candidate)
         # A secured yaku and a closer standard route can justify giving up a
         # few immediate outs. Keep their value bounded for narrow hands.
         alternative = compared_triplet(candidate)
         credit = min(4, alternative['ukeire']/4) if alternative else 0
         efficiency = min(outs + credit,40)/12
-        points = max(candidate.get('dama_point',0),candidate.get('riichi_point',0))
+        points = available_points(snapshot, candidate)
         value = min(points,24000)/8000 if mode=='value' and nearest==0 else 0
         return efficiency+value-penalty, candidate['tile']==preferred
 
@@ -149,6 +152,25 @@ def attack_ukeire(snapshot, c):
     if c['shanten'] == 0 and (snapshot.get('open_hand') or c.get('open_hand')):
         return c.get('dama_ukeire', c['ukeire'] if c.get('dama_point') else 0)
     return c['ukeire']
+
+
+def available_points(snapshot, c):
+    points = c.get('dama_point', 0)
+    ops = snapshot.get('legal_operations') or {}
+    if (not snapshot.get('open_hand') and not c.get('open_hand') and
+            (not ops.get('operation_list') or riichi_available(snapshot, c['tile']))):
+        points = max(points, c.get('riichi_point', 0))
+    return points
+
+
+def progress_score(snapshot, c):
+    outs = attack_ukeire(snapshot, c)
+    if c['shanten'] < 2 or not outs:
+        return outs
+    # For distant hands, allow a small loss now for a wider next step or
+    # a draw that improves the shape without changing shanten.
+    improvement = max(0, c.get('improved_ukeire', outs) - outs)
+    return outs + min(2, c.get('next_ukeire', 0)/10) + min(2, improvement/2)
 
 
 def attacking_choices(snapshot, candidates):
@@ -253,6 +275,7 @@ def call_advice(snapshot, actions, mode):
     if offered is None or before is None:
         return '建议先跳过', '这次缺少吃碰后的牌形分析，先保留手里的组合。'
     best = None
+    risky_cut = None
     for op in actions:
         if op['type'] not in (2, 3):
             continue
@@ -283,6 +306,13 @@ def call_advice(snapshot, actions, mode):
                 ready = c['shanten'] == 0
                 if ready and (not c['dama_point'] or c['furiten']) or not ready and not plans:
                     continue
+                if snapshot.get('riichi_opponents') and not ready:
+                    rates = snapshot.get('ron_risk') or {}
+                    danger = rates.get(normalized(cut))
+                    if danger is not None and danger >= 5:
+                        if risky_cut is None or danger < risky_cut[1]:
+                            risky_cut = cut,danger
+                        continue
                 plan = max(plans, key=lambda p: route_rank(p, mode), default=None)
                 if mode == 'value' and not snapshot.get('open_hand') and not (
                     (ready and c['dama_point'] >= 3900) or (plan and plan.han >= 2)
@@ -296,6 +326,9 @@ def call_advice(snapshot, actions, mode):
                     best = score, f'建议{verb}{tile_name(offered)}', f'用手里的{how}去{verb}，再打{tile_name(cut)}。' + benefit
     if best:
         return best[1:]
+    if risky_cut:
+        cut,danger = risky_cut
+        return '建议跳过吃碰', f'有人立直。吃碰后仍未听牌，还要打{tile_name(cut)}，估计放铳风险 {risk_label(danger)}。'
     if mode == 'value' and not snapshot.get('open_hand'):
         return '建议跳过吃碰', '这次开门的收益有限，保持门清还能争取立直加番。'
     return '建议跳过吃碰', '这次吃碰没有同时带来更快的进张和清楚的和牌路线。'
@@ -365,16 +398,22 @@ def choose(snapshot, mode):
     rates = snapshot.get('ron_risk') or {}
     def efficiency(c):
         breaks = c.get('breaks_triplet', sum(normalized(t)==normalized(c['tile']) for t in hand)==3)
-        return (-c['shanten'], attack_ukeire(snapshot, c), -c.get('normal_shanten',99),
+        code = normalized(c['tile'])
+        edge = abs(5-int(code[0])) if code[1] != 'z' else 0
+        return (-c['shanten'], round(progress_score(snapshot,c),5), attack_ukeire(snapshot,c),
+                round(c.get('next_ukeire',0),4), round(c.get('improved_ukeire',0),4),
+                -c.get('normal_shanten',99),
                 c.get('normal_ukeire',0), not breaks,
-                c.get('speed',0), not c.get('discard_dora'))
+                not c.get('discard_dora') and c['tile'][0] != '0', edge, c.get('speed',0))
     if mode == 'defence' and rates:
         # Include every legal tile, even if cutting it dismantles a finished set.
         ranked = {normalized(c['tile']): c for c in candidates}
         legal = [t for t in hand if normalized(t) not in forbidden and normalized(t) in rates]
+        preserve_safety = snapshot.get('riichi_opponents') and min(c['shanten'] for c in candidates) >= 2
         def safety(t):
             c = ranked.get(normalized(t))
-            return (-rates[normalized(t)], efficiency(c) if c else (-99, 0, 0, False), t[0] != '0')
+            reserve = sum(normalized(x)==normalized(t) for x in hand) if rates[normalized(t)]==0 and preserve_safety else 0
+            return (-rates[normalized(t)], reserve, efficiency(c) if c else (-99,), t[0] != '0')
         if legal:
             tile = max(legal, key=safety)
             return tile, ranked.get(normalized(tile))
@@ -383,13 +422,22 @@ def choose(snapshot, mode):
     if mode != 'value':
         return fast['tile'], fast
 
+    ready = [c for c in candidates if c['shanten']==0]
+    has_actions = (snapshot.get('legal_operations') or {}).get('operation_list')
+    use_win_rates = snapshot.get('players',4)==4 and all(
+        c.get('win_rate') is not None and (not has_actions or snapshot.get('open_hand')
+                                           or riichi_available(snapshot,c['tile'])) for c in ready)
     def value(c):
         kept = hand.copy()
         kept.remove(c['tile'])
         plans = routes(snapshot, kept, c.get('yaku', ''), analysis=c)
         fit = max((route_rank(p, 'value') for p in plans), default=0)
         # At tenpai use the engine's point estimate; earlier, use feasible routes.
-        points = max(c.get('riichi_point', 0), c.get('dama_point', 0))
+        points = available_points(snapshot,c)
+        # Weight a ready hand's payout by the chance it can actually be
+        # collected. The engine's win-rate model is for four players.
+        if c['shanten'] == 0 and use_win_rates:
+            points *= max(0,min(100,c['win_rate']))/100
         return (points if c['shanten'] == 0 else 0,
                 fit - 4 * (c['shanten'] - fast['shanten']) - 2 * bool(c.get('discard_dora') or c['tile'][0] == '0'),
                 efficiency(c))

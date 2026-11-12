@@ -1,5 +1,5 @@
 """Chinese coaching text shared by the live view and the example."""
-from strategy import MODES, attack_ukeire, avoid_last_plan, call_advice, choose, normalized, riichi_advice, risk_label, route_rank, routes, special_advice, tile_name
+from strategy import MODES, attack_ukeire, available_points, avoid_last_plan, call_advice, choose, normalized, riichi_advice, risk_label, route_rank, routes, special_advice, tile_name
 
 
 def forecast_text(snapshot, candidate=None):
@@ -170,7 +170,7 @@ def _present(snapshot, strategy='speed', risk_threshold=5, selection=None, cauti
     if (strategy == 'defence' or candidate is None) and rates:
         result['reason'] = f'在当前能估算的对手中，{name}的放铳估计最低（{risk_label(rates.get(normalized(tile)))}）。' + step
     elif strategy == 'value':
-        points = max(candidate.get('riichi_point', 0), candidate.get('dama_point', 0))
+        points = available_points(snapshot,candidate)
         if points:
             result['reason'] = f'保留听牌，按引擎估算，和牌时平均打点约 {points:.0f} 点。'
         elif plans:
@@ -182,6 +182,8 @@ def _present(snapshot, strategy='speed', risk_threshold=5, selection=None, cauti
         if tile.endswith('z') and hand.count(tile) == 1:
             prefix += f'{name}只有一张。'
         result['reason'] = prefix + step + f'能让手牌前进的牌还有 {candidate["ukeire"]} 张未见。'
+        if candidate['shanten'] >= 2 and candidate.get('next_ukeire',0) > 0:
+            result['reason'] += f'摸进后，再往前一步平均约有 {candidate["next_ukeire"]:.0f} 张可摸。'
     alerts = []
     if snapshot.get('riichi_opponents'):
         alerts.append('、'.join(snapshot['riichi_opponents']) + '已立直')

@@ -105,6 +105,7 @@ func coachBase(kind string) map[string]interface{} {
 			result["round_wind"] = util.Mahjong[p.RoundWindTile]
 			result["seat_wind"] = util.Mahjong[p.SelfWindTile]
 			result["own_discards"] = len(p.DiscardTiles)
+			result["wall_remaining"] = p.LeftDrawTilesCount
 			melds := [][]string{}
 			for _, meld := range p.Melds {
 				group := []string{}
@@ -343,6 +344,7 @@ normalFiveFound:
 		"ukeire": a.Waits.AllCount(), "waits": waits, "yaku": util.YakuTypesToStr(yakuIDs),
 		"furiten": a.FuritenRate, "part_wait": a.IsPartWait, "open_hand": a.IsNaki,
 		"speed": a.MixedWaitsScore, "next_ukeire": a.AvgNextShantenWaitsCount,
+		"improved_ukeire": a.AvgImproveWaitsCount,
 		"dama_point": a.DamaPoint, "riichi_point": a.RiichiPoint, "discard_dora": r.IsDiscardDoraTile,
 		"dama_ukeire": a.DamaWaits.AllCount(),
 		"win_rate":    a.AvgAgariRate,

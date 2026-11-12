@@ -15,9 +15,15 @@
 
 ## 下载发行版
 
-适用于 Windows 10 / 11 的 x64 电脑。首次安装请解压 [v0.3.0 完整便携版](https://github.com/Hirokimeji/MahjongCoach/releases/tag/v0.3.0)，然后安装 [v0.3.2 教练累积更新包](https://github.com/Hirokimeji/MahjongCoach/releases/tag/v0.3.2)。
+适用于 Windows 10 / 11 的 x64 电脑。首次安装请解压 [v0.3.0 完整便携版](https://github.com/Hirokimeji/MahjongCoach/releases/tag/v0.3.0)，然后安装 [v0.4.0 教练累积更新包](https://github.com/Hirokimeji/MahjongCoach/releases/tag/v0.4.0)。
 
-已有 v0.3.0 或 v0.3.1 的用户可直接更新。结束对局，点击「停止并恢复」并关闭教练，将更新包中的 `MahjongCoach` 文件夹复制到「雀魂新手教练.exe」所在目录，选择合并文件夹并替换同名文件，然后重新打开教练。
+已有 v0.3.0 至 v0.3.2 的用户可直接更新。结束对局，点击「停止并恢复」并关闭教练，将更新包中的 `MahjongCoach` 文件夹复制到「雀魂新手教练.exe」所在目录，选择合并文件夹并替换同名文件，然后重新打开教练。
+
+## 切牌和攻守提示
+
+二向听及以上会比较当前进张、进张后的平均进张和摸到其他牌后的改良空间。一向听优先比较能直接听牌的未见张数。四麻做大牌时，在有适用的和率估计时一起比较打点和和牌机会。临近流局时，「避四／避末」会收紧未听牌且面临威胁时的推进条件。
+
+牌效和改良思路参考「魔女」的搭子教程及 79 教程的分向听牌理，评分参数由本项目设定。[魔女 Blog 日本麻将教学](https://hunque.top/upload/魔女Blog日本麻将教学.pdf) · [Seventh9 日麻教程](https://www.bighelper.top/static/zip/79博客-目录书签跳转版.pdf)
 
 发行包内置 Python、PySide6、分析引擎、MAX 和 Live2D 播放依赖。解压完成后双击 **雀魂新手教练.exe**，即可打开界面。请将整个文件夹解压到可写目录，例如 `D:\Games\MahjongCoach`，并保留子文件夹。无需安装 Python、Go 或运行构建命令。
 
