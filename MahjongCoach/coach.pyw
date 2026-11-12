@@ -7,13 +7,14 @@ import msvcrt
 import os
 import sys
 
-from PySide6.QtCore import Qt, QTimer, QProcess, QPoint, QEvent, QRectF, QSettings
+from PySide6.QtCore import Qt, QTimer, QProcess, QPoint, QEvent, QRectF, QSettings, QSize
 from PySide6.QtGui import QColor, QIcon, QPainter, QPainterPath, QPen, QPixmap, QRegion
 from PySide6.QtWidgets import (QApplication, QBoxLayout, QHBoxLayout, QInputDialog, QMainWindow, QMenu, QPushButton, QMessageBox,
                                QScrollArea, QSizePolicy, QVBoxLayout, QWidget)
 
 import backend
 from backgrounds import BackgroundPlayer, Collection, DEFAULT, Gallery
+from preferences import appearance_settings
 from presenter import opponent_rows, present
 from connection_settings import edit_connection
 from strategy import MODES, normalized, risk_label, tile_name
@@ -79,8 +80,10 @@ class ResizeGrip(QWidget):
 class Coach(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.strategy = 'speed'
-        self.appearance = QSettings(str(ROOT/'外观.ini'), QSettings.IniFormat)
+        self.appearance = appearance_settings()
+        saved_strategy = self.appearance.value('strategy','speed',type=str)
+        self.strategy = saved_strategy if saved_strategy in MODES else 'speed'
+        self.restoring_preferences = True
         saved_theme = self.appearance.value('theme', '深色', type=str)
         self.theme = saved_theme if saved_theme in THEMES else '深色'
         self.risk_threshold = self.appearance.value('riskThreshold', 5, type=int)
@@ -90,7 +93,8 @@ class Coach(QMainWindow):
         self.process = self.action = self.last_error = None
         self.latest = {'kind':'connected'}
         self.demo_hand = json.loads((ROOT/'demo.json').read_text(encoding='utf-8'))
-        self.normal_size = None
+        self.normal_size = self.appearance.value('largeSize',QSize(1150,820),type=QSize)
+        self.compact_size = self.appearance.value('smallSize',QSize(550,660),type=QSize)
         self.setWindowFlag(Qt.FramelessWindowHint)
         self.setWindowTitle('雀魂 · 新手教练')
         self.setWindowIcon(QIcon(str(ROOT/'coach-portrait.png')))
@@ -239,6 +243,8 @@ class Coach(QMainWindow):
         seat_head.addWidget(label('各家听牌与危险牌','section'))
         seat_head.addStretch()
         self.all_tiles = button('看全部牌种',self.render_opponents,'theme',True)
+        self.all_tiles.setChecked(self.appearance.value('allTiles',False,type=bool))
+        self.all_tiles.toggled.connect(lambda value:self.store_preference('allTiles',value))
         seat_head.addWidget(self.all_tiles)
         seats.addLayout(seat_head)
         self.opponent_caption = label(role='muted',wrap=True)
@@ -305,6 +311,11 @@ class Coach(QMainWindow):
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.poll)
         self.timer.start(450)
+        self.preference_timer = QTimer(self)
+        self.preference_timer.setSingleShot(True)
+        self.preference_timer.timeout.connect(self.save_window_preferences)
+        self.restore_window_preferences()
+        self.restoring_preferences = False
 
     def set_theme(self,name,persist=True):
         self.theme = self.wall.theme = name
@@ -318,9 +329,50 @@ class Coach(QMainWindow):
             if self.appearance.status()!=QSettings.NoError:
                 QMessageBox.warning(self,'配色保存失败','本次配色已应用，但无法写入外观设置。')
 
+    def store_preference(self,key,value):
+        self.appearance.setValue(key,value)
+        self.appearance.sync()
+
+    def restore_window_preferences(self):
+        pinned = self.appearance.value('alwaysOnTop',False,type=bool)
+        self.pin.setChecked(pinned)
+        self.setWindowFlag(Qt.WindowStaysOnTopHint,pinned)
+        geometry = self.appearance.value('geometry')
+        if geometry:
+            self.restoreGeometry(geometry)
+        if not any(screen.availableGeometry().intersects(self.frameGeometry())
+                   for screen in QApplication.screens()):
+            area = self.screen().availableGeometry()
+            self.resize(self.size().boundedTo(area.size()))
+            self.move(area.center()-self.rect().center())
+
+    def save_window_preferences(self):
+        if self.restoring_preferences:
+            return
+        if not self.isMaximized() and not self.isMinimized():
+            if self.width()<850:
+                self.compact_size = self.size()
+            else:
+                self.normal_size = self.size()
+        self.appearance.setValue('geometry',self.saveGeometry())
+        self.appearance.setValue('largeSize',self.normal_size)
+        self.appearance.setValue('smallSize',self.compact_size)
+        self.appearance.sync()
+
+    def schedule_window_preferences(self):
+        if hasattr(self,'preference_timer') and not self.restoring_preferences:
+            self.preference_timer.start(300)
+
+    def moveEvent(self,event):
+        super().moveEvent(event)
+        self.schedule_window_preferences()
+
     def set_pin(self, enabled):
+        geometry = self.saveGeometry()
         self.setWindowFlag(Qt.WindowStaysOnTopHint, enabled)
+        self.restoreGeometry(geometry)
         self.show()
+        self.store_preference('alwaysOnTop',enabled)
 
     def show_theme_menu(self):
         self.theme_menu.popup(self.theme_picker.mapToGlobal(QPoint(0,self.theme_picker.height())))
@@ -464,19 +516,21 @@ class Coach(QMainWindow):
     def resizeEvent(self,event):
         super().resizeEvent(event)
         self.update_window_shape()
+        self.schedule_window_preferences()
         if hasattr(self,'mobile_guide'):
             self.responsive()
 
     def toggle_size(self):
         area = self.screen().availableGeometry()
         if self.width() >= 850:
-            self.normal_size = self.size()
-            self.showNormal()
-            self.resize(min(550,area.width()-16),min(660,area.height()-40))
-        elif self.normal_size:
-            self.resize(self.normal_size.boundedTo(area.size()))
+            self.normal_size = self.normalGeometry().size() if self.isMaximized() else self.size()
+            target = self.compact_size
         else:
-            self.resize(min(1150,area.width()-16),min(820,area.height()-40))
+            self.compact_size = self.size()
+            target = self.normal_size
+        self.showNormal()
+        self.resize(target.boundedTo(area.size()).expandedTo(self.minimumSize()))
+        self.save_window_preferences()
 
     @staticmethod
     def open_guide():
@@ -490,6 +544,7 @@ class Coach(QMainWindow):
 
     def switch_mode(self,key):
         self.strategy = key
+        self.store_preference('strategy',key)
         self.render(self.latest)
 
     def set_coach_only(self, enabled, persist=True):
@@ -739,6 +794,8 @@ class Coach(QMainWindow):
         self.update_pending = True
 
     def closeEvent(self,event):
+        self.preference_timer.stop()
+        self.save_window_preferences()
         if self.process or self.needs_restore():
             event.ignore()
             self.closing = True

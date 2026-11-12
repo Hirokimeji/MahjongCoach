@@ -23,7 +23,7 @@ def main():
     parser.add_argument('--vendor',type=Path,required=True)
     parser.add_argument('--max-source',type=Path,required=True)
     args = parser.parse_args()
-    dest = ROOT/'dist/MahjongCoach-v0.2.2-win-x64'
+    dest = ROOT/'dist/MahjongCoach-v0.2.3-win-x64'
     if dest.exists():
         raise SystemExit('Output already exists. Use a fresh build directory.')
     app = dest/'MahjongCoach'
