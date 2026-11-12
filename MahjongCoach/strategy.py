@@ -7,60 +7,105 @@ HONORS = ['东风', '南风', '西风', '北风', '白板', '发财', '红中']
 MODES = {'speed': '先胡牌', 'value': '做大牌', 'defence': '先防守', 'avoid_last':'避四'}
 
 
-def avoid_last_plan(snapshot):
+def _avoid_last_decision(snapshot):
     scores, seat = snapshot.get('scores'), snapshot.get('self_seat')
     count = snapshot.get('players',4)
-    if (not isinstance(scores,list) or len(scores)!=count or type(seat) is not int
-            or not 0 <= seat < count or any(type(n) is not int for n in scores)):
-        return 'speed','点数信息不足，暂按牌效选牌，避末判断等待新的一局。',False
-    mine = scores[seat]
-    others = [n for i,n in enumerate(scores) if i!=seat]
-    tied = mine in others
-    rank = 1+sum(n>mine for n in others)
-    last = mine <= min(others)
-    gap = min(others)-mine if last else mine-min(others)
-    length = snapshot.get('match_rounds')
-    late = type(length) is int and snapshot.get('round',0)>=length-2
-    threatened = bool(snapshot.get('riichi_opponents')) or any(
-        (p.get('tenpai') or 0)>=35 for p in snapshot.get('opponents') or [])
+    valid_scores = (isinstance(scores,list) and len(scores)==count and type(seat) is int
+                    and 0<=seat<count and all(type(n) is int for n in scores))
+    ahead, late, gap = False, False, 0
+    mode = 'speed'
+    if valid_scores:
+        mine = scores[seat]
+        others = [n for i,n in enumerate(scores) if i!=seat]
+        tied = mine in others
+        rank = 1+sum(n>mine for n in others)
+        ahead = mine>min(others)
+        gap = mine-min(others) if ahead else min(others)-mine
+        length = snapshot.get('match_rounds')
+        late = type(length) is int and snapshot.get('round',0)>=length-2
+        standing = f'当前{"并列" if tied else ""}第 {rank} 名'
+        standing += f'，领先末位 {gap:,} 点。' if ahead else f'，距上一名 {gap:,} 点。'
+        if tied:
+            standing += '同点按危险侧处理。'
+        if not ahead and late and gap>=8000:
+            mode = 'value'
+    else:
+        standing = '点数信息不足，先结合牌效与风险判断。'
+
     forbidden = forbidden_discards(snapshot)
     candidates = [c for c in snapshot.get('candidates') or []
                   if c['tile'] in snapshot.get('hand',[]) and normalized(c['tile']) not in forbidden]
-    best = min(candidates,key=lambda c:(c['shanten'],-c['ukeire']),default={})
-    strong = (best.get('shanten')==0 and best.get('ukeire',0)>=4
-              and max(best.get('dama_point',0),best.get('riichi_point',0))>=3900)
-    standing = (f'当前并列第 {rank} 名（同点按危险侧处理）' if tied else f'当前第 {rank} 名')
-    if last:
-        mode = 'value' if late and gap>=8000 else 'speed'
-        aim = f'落后上一名 {gap:,} 点' if not tied else '与末位同点'
-        return mode,standing+'，'+aim+'。'+('后段需要提高打点争取追分。' if mode=='value' else '优先争取和牌脱离末位，控制无谓风险。'),False
-    protect = (late and gap>=8000) or (threatened and not strong)
-    mode = 'defence' if protect else 'speed'
-    note = ('后段已有分差，优先守住。' if late and gap>=8000 else '对手有威胁，当前手牌收益不足，优先防守。') if protect else '保留快速和牌机会，同时限制危险切牌。'
-    return mode,standing+f'，领先末位 {gap:,} 点。'+note,True
+    rates = snapshot.get('ron_risk') or {}
+    opponents = snapshot.get('opponents') or []
+    threats = max(len(snapshot.get('riichi_opponents') or []),
+                  sum((p.get('tenpai') or 0)>=45 for p in opponents))
+
+    def budget(candidate):
+        shanten, waits = candidate['shanten'], candidate['ukeire']
+        points = max(candidate.get('dama_point',0),candidate.get('riichi_point',0))
+        if shanten==0:
+            limit = (9 if waits>=4 else 6)+min(4,points/3900*2)
+        elif shanten==1:
+            limit = 5 if waits>=12 else 3.5
+        else:
+            limit = 1.5
+        if snapshot.get('seat_wind')=='1z':
+            limit += 1
+        if late and ahead:
+            limit *= 0.7 if gap>=8000 else 0.85
+        elif late and valid_scores and not ahead:
+            limit *= 1.25
+        if threats>=2:
+            limit *= 0.8
+        return limit
+
+    if not candidates:
+        if threats and snapshot.get('shanten',0)>=2:
+            mode = 'defence'
+        tile, candidate = choose(snapshot,mode) if snapshot.get('hand') else (None,None)
+        return mode,standing+'等待可用切牌分析，继续按当前牌形判断。',ahead,tile,candidate
+
+    nearest = min(c['shanten'] for c in candidates)
+    forward = [c for c in candidates if c['shanten']==nearest]
+    preferred, _ = choose(dict(snapshot,candidates=forward),mode)
+    def utility(candidate):
+        rate = rates.get(normalized(candidate['tile']))
+        penalty = (rate/budget(candidate))**1.4 if rate is not None else 1
+        efficiency = min(candidate['ukeire'],40)/12
+        points = max(candidate.get('dama_point',0),candidate.get('riichi_point',0))
+        value = min(points,24000)/8000 if mode=='value' and nearest==0 else 0
+        return efficiency+value-penalty, candidate['tile']==preferred
+
+    selected = max(forward,key=utility)
+    tile = selected['tile']
+    risk = rates.get(normalized(tile))
+    safe_tile, safe_candidate = choose(snapshot,'defence')
+    safe_risk = rates.get(normalized(safe_tile)) if safe_tile else None
+    threatened = threats>0 or risk is not None and risk>=8
+    # Fold only when advancing actually costs too much risk and a materially
+    # safer legal alternative exists. A nominal lead alone never triggers a fold.
+    if (threatened and risk is not None and risk>budget(selected) and safe_risk is not None
+            and safe_risk<=risk*0.6):
+        reason = (f'推进要打{tile_name(tile)}，估计风险 {risk_label(risk)}，'
+                  f'超过这手牌的进攻参考线 {budget(selected):.1f}%。'
+                  f'改打{tile_name(safe_tile)}，风险 {risk_label(safe_risk)}，本巡退守。')
+        return 'defence',standing+reason,ahead,safe_tile,safe_candidate
+
+    shape = '已听牌' if nearest==0 else f'{nearest} 向听'
+    risk_text = f'这步风险约 {risk_label(risk)}。' if risk is not None else '这步风险尚待估算。'
+    reason = f'{shape}，{selected["ukeire"]} 张有效牌未见。'+risk_text
+    reason += '继续保留和牌机会。' if mode=='speed' else '在保留进张的前提下争取追分打点。'
+    return mode,standing+reason,ahead,tile,selected
+
+
+def avoid_last_plan(snapshot):
+    mode, reason, ahead, _, _ = _avoid_last_decision(snapshot)
+    return mode, reason, ahead
 
 
 def choose_avoid_last(snapshot):
-    mode, _, ahead = avoid_last_plan(snapshot)
-    if mode=='defence':
-        return choose(snapshot,'defence')
-    rates = snapshot.get('ron_risk') or {}
-    forbidden = forbidden_discards(snapshot)
-    candidates = [c for c in snapshot.get('candidates') or []
-                  if c['tile'] in snapshot['hand'] and normalized(c['tile']) not in forbidden]
-    if not candidates or not rates:
-        return choose(snapshot,mode)
-    # A risk budget limits offensive candidates. Missing estimates stay unknown.
-    budget = 3 if ahead else 8
-    pool = [c for c in candidates if rates.get(normalized(c['tile']),101)<=budget]
-    if pool:
-        nearest = min(c['shanten'] for c in candidates)
-        pool = [c for c in pool if c['shanten']<=nearest]
-    if pool:
-        return choose(dict(snapshot,candidates=pool),mode)
-    if ahead:
-        return choose(snapshot,'defence')
-    return choose(snapshot,mode)
+    _, _, _, tile, candidate = _avoid_last_decision(snapshot)
+    return tile, candidate
 
 
 def forbidden_discards(snapshot):

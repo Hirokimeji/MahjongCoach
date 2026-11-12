@@ -212,7 +212,7 @@ def present(snapshot, strategy='speed', risk_threshold=5):
     if strategy != 'avoid_last':
         return _present(snapshot,strategy,risk_threshold)
     mode, explanation, ahead = avoid_last_plan(snapshot)
-    result = _present(snapshot,mode,risk_threshold,selection='avoid_last',cautious=ahead)
+    result = _present(snapshot,mode,risk_threshold,selection='avoid_last',cautious=mode=='defence')
     result['tag'] = '避末' if snapshot.get('players')==3 else MODES[strategy]
     if result['hand']:
         result['placement'] = explanation

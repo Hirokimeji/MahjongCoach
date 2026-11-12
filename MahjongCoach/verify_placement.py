@@ -9,9 +9,29 @@ from table_context import TableContext
 def check():
     base = json.loads((Path(__file__).parent/'demo.json').read_text(encoding='utf-8'))
     base.update(scores=[35000,30000,25000,10000],self_seat=0,match_rounds=8,round=7)
-    assert avoid_last_plan(base)[0]=='defence'
-    assert choose(base,'avoid_last')==choose(base,'defence')
+    # Leading late is a reason to reduce risk, not automatically abandon a hand.
+    assert avoid_last_plan(dict(base,ron_risk={t:0.1 for t in base['ron_risk']}))[0]=='speed'
     assert '领先末位' in present(base,'avoid_last')['placement']
+    early = dict(base,round=0,riichi_opponents=['上家'],scores=[28000,25000,24000,23000])
+    hand = ['1m','2m','3m']
+    good = dict(early,hand=hand,candidates=[
+        dict(tile='1m',shanten=1,ukeire=20,dama_point=0,riichi_point=0),
+        dict(tile='2m',shanten=2,ukeire=4,dama_point=0,riichi_point=0)],
+        ron_risk={'1m':2,'2m':0,'3m':0.1})
+    assert choose(good,'avoid_last')[0]=='1m'
+    assert avoid_last_plan(good)[0]=='speed'
+    cheap_ready = dict(good,candidates=[
+        dict(tile='1m',shanten=0,ukeire=8,dama_point=1000,riichi_point=2000)],
+        ron_risk={'1m':5,'2m':0,'3m':0.1})
+    assert choose(cheap_ready,'avoid_last')[0]=='1m'
+    assert avoid_last_plan(cheap_ready)[0]=='speed'
+    weak = dict(good,candidates=[dict(tile='1m',shanten=2,ukeire=4)],ron_risk={'1m':12,'2m':0,'3m':1})
+    assert avoid_last_plan(weak)[0]=='defence'
+    assert choose(weak,'avoid_last')[0]=='2m'
+    quiet = dict(weak,riichi_opponents=[],opponents=[],ron_risk={'1m':0.2,'2m':0,'3m':0.1})
+    assert choose(quiet,'avoid_last')[0]=='1m'
+    assert avoid_last_plan(dict(good,ron_risk={})) [0]=='speed'
+    assert present({'kind':'connected'},'avoid_last')['title']=='等待牌局'
     chase = dict(base,scores=[10000,35000,30000,25000])
     assert avoid_last_plan(chase)[0]=='value'
     close = dict(base,scores=[24000,26000,25000,25000])
