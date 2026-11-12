@@ -243,8 +243,15 @@ class TileGrid(QWidget):
             self.columns = cols
             for i, item in enumerate(self.items):
                 self.grid.addWidget(item, i//cols,i%cols)
-            self.grid.invalidate()
-            self.setFixedHeight(self.grid.sizeHint().height())
+                item.show()
+        # Newly reparented tiles can still be hidden when the layout is queried.
+        # Calculate the row height from the tiles instead of caching an empty grid.
+        for item in self.items:
+            item.ensurePolished()
+        rows = (len(self.items)+cols-1)//cols
+        row_height = max((item.sizeHint().height() for item in self.items),default=0)
+        self.grid.invalidate()
+        self.setFixedHeight(rows*row_height+max(0,rows-1)*self.grid.spacing())
 
     def resizeEvent(self, event):
         self.arrange()
