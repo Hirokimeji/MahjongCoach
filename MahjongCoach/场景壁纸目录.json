@@ -1,0 +1,578 @@
+[
+ {
+  "id": "cream-maid-teatime",
+  "name": "奶霜茶歇",
+  "detail": "奶霜、女仆与明亮茶点",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/cream-maid-teatime/1.0.0/cream-maid-teatime-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/cream-maid-teatime/1.0.0/cream-maid-teatime-4k-v1.mp4",
+  "size": 9302919,
+  "sha256": "94ab20cae969d9b9188fb58f2c45008e0621bdf07d02e4f305d875aadd571991"
+ },
+ {
+  "id": "sunlit-beach-repose",
+  "name": "晴滩午梦",
+  "detail": "晴滩、银发与悠闲午梦",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/sunlit-beach-repose/1.0.0/sunlit-beach-repose-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/sunlit-beach-repose/1.0.0/sunlit-beach-repose-4k-v1.mp4",
+  "size": 13131431,
+  "sha256": "7be4b0c39b2f1edab717ccce4438508536d86364a16dacef722e3e1304e3e9c2"
+ },
+ {
+  "id": "harbor-alley-breeze",
+  "name": "港巷晴风",
+  "detail": "港巷、晴空与轻快海风",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/harbor-alley-breeze/1.0.0/harbor-alley-breeze-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/harbor-alley-breeze/1.0.0/harbor-alley-breeze-4k-v1.mp4",
+  "size": 6189518,
+  "sha256": "46bb32b24f23404ada3ea73b1d6adc65b8f34ca46da744eacb52eec96e0471c2"
+ },
+ {
+  "id": "sakura-cat-balcony",
+  "name": "樱枝猫座",
+  "detail": "樱枝、猫耳与晴白廊座",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/sakura-cat-balcony/1.0.0/sakura-cat-balcony-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/sakura-cat-balcony/1.0.0/sakura-cat-balcony-4k-v1.mp4",
+  "size": 17141011,
+  "sha256": "9d071774bf58ed92d983fd9d04bce81e04a3f2fc79ad73c3af72bcd09c300f98"
+ },
+ {
+  "id": "azure-lounge-wait",
+  "name": "晴窗候机",
+  "detail": "晴窗、银发与蓝灰候机厅",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/azure-lounge-wait/1.0.0/azure-lounge-wait-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/azure-lounge-wait/1.0.0/azure-lounge-wait-4k-v1.mp4",
+  "size": 12258147,
+  "sha256": "fb6ab336ff3a959dd3f2ce1117e2730dcceba1f8b636de21d2faac1181a87922"
+ },
+ {
+  "id": "coral-stellar-tide",
+  "name": "绯潮星渊",
+  "detail": "绯发、星潮与深海幻境",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/coral-stellar-tide/1.0.0/coral-stellar-tide-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/coral-stellar-tide/1.0.0/coral-stellar-tide-4k-v1.mp4",
+  "size": 38061372,
+  "sha256": "bdf3ec0edba4f385681b6a382e64619377df8792aa3388d573ff216508042f38"
+ },
+ {
+  "id": "sunlit-dive-shore",
+  "name": "晴浪潜游",
+  "detail": "晴浪、泳圈与潜游假日",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/sunlit-dive-shore/1.0.0/sunlit-dive-shore-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/sunlit-dive-shore/1.0.0/sunlit-dive-shore-4k-v1.mp4",
+  "size": 38722352,
+  "sha256": "8cd16163c1bd23d35a6693a87d296fa7f4937b4995d03119fa824d2a6dbe31ba"
+ },
+ {
+  "id": "mirror-twin-morning",
+  "name": "镜前双影",
+  "detail": "晨镜、双影与柔白更衣间",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/mirror-twin-morning/1.0.0/mirror-twin-morning-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/mirror-twin-morning/1.0.0/mirror-twin-morning-4k-v1.mp4",
+  "size": 1989965,
+  "sha256": "a95ccb79cb5ceaf131e126ebb8203a0568db41544221783df17396fb07e4fc88"
+ },
+ {
+  "id": "sunlit-sand-cushion",
+  "name": "晴沙软浪",
+  "detail": "晴沙、软枕与金色海岸",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/sunlit-sand-cushion/1.0.0/sunlit-sand-cushion-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/sunlit-sand-cushion/1.0.0/sunlit-sand-cushion-4k-v1.mp4",
+  "size": 7119819,
+  "sha256": "88a585c43a3914581bfdebc7925e40e7c827fcd8450e9a318ed4a2319dd6ceb2"
+ },
+ {
+  "id": "indigo-moon-branch",
+  "name": "青月花枝",
+  "detail": "青月、花枝与夜色长发",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/indigo-moon-branch/1.0.0/indigo-moon-branch-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/indigo-moon-branch/1.0.0/indigo-moon-branch-4k-v1.mp4",
+  "size": 26797160,
+  "sha256": "78738153e9d3620b68ec1479a794f3ff00ec81667b9336db3f6bea9120825288"
+ },
+ {
+  "id": "crimson-ivory-duet",
+  "name": "绯白双舞",
+  "detail": "绯白、双影与流动丝带",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/crimson-ivory-duet/1.0.0/crimson-ivory-duet-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/crimson-ivory-duet/1.0.0/crimson-ivory-duet-4k-v1.mp4",
+  "size": 47346553,
+  "sha256": "e7dd7d416af0d9702f07996d716fd8c21aaa8f7f657643df47a7acc7a0375ee6"
+ },
+ {
+  "id": "ember-dragon-dance",
+  "name": "焰羽龙舞",
+  "detail": "焰羽、龙影与赤金旋舞",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/ember-dragon-dance/1.0.0/ember-dragon-dance-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/ember-dragon-dance/1.0.0/ember-dragon-dance-4k-v1.mp4",
+  "size": 35298071,
+  "sha256": "12aeba077a68c1a1b70cef27f5f89c0fb3132ffe72f27c3730d070f7ae473fae"
+ },
+ {
+  "id": "azure-mechanism-court",
+  "name": "机关夜庭",
+  "detail": "青灯、机关与幽静内庭",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/azure-mechanism-court/1.0.0/azure-mechanism-court-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/azure-mechanism-court/1.0.0/azure-mechanism-court-4k-v1.mp4",
+  "size": 6338362,
+  "sha256": "91b088e4a82d0af14d03605b9c10b4e2d2b936ec159f090de753e1bcdf62e15b"
+ },
+ {
+  "id": "sakura-pool-repose",
+  "name": "樱池午憩",
+  "detail": "樱池、和庭与慵懒午憩",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/sakura-pool-repose/1.0.0/sakura-pool-repose-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/sakura-pool-repose/1.0.0/sakura-pool-repose-4k-v1.mp4",
+  "size": 19005671,
+  "sha256": "48b28b5904ac8cd757f7025bece3a2dbd1f784efe6dd6e7c3006d2b1550a9853"
+ },
+ {
+  "id": "spectral-curio-shop",
+  "name": "幽灯秘店",
+  "detail": "幽灯、符纸与神秘小店",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/spectral-curio-shop/1.0.0/spectral-curio-shop-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/spectral-curio-shop/1.0.0/spectral-curio-shop-4k-v1.mp4",
+  "size": 2388074,
+  "sha256": "71b2c4e8703d96db7c5718379a8d119866d10664217be6da56895711ddb61416"
+ },
+ {
+  "id": "mirrored-sisters-room",
+  "name": "镜映双姝",
+  "detail": "晨镜、双姝与柔亮衣帽间",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/mirrored-sisters-room/1.0.0/mirrored-sisters-room-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/mirrored-sisters-room/1.0.0/mirrored-sisters-room-4k-v1.mp4",
+  "size": 17514491,
+  "sha256": "bc3d980543e80d923332b989aafd4c0de91a05d18272e095a56bac1722e7d655"
+ },
+ {
+  "id": "violet-bunny-bar",
+  "name": "紫影兔吧",
+  "detail": "紫灯、兔影与夜色吧台",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/violet-bunny-bar/1.0.0/violet-bunny-bar-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/violet-bunny-bar/1.0.0/violet-bunny-bar-4k-v1.mp4",
+  "size": 18669642,
+  "sha256": "4ee7bfbc14fae2dbf106e68c6452415ab174ac4162227103f30ab593e031d978"
+ },
+ {
+  "id": "moonlit-silver-suite",
+  "name": "月窗银榻",
+  "detail": "月窗、银发与静夜白榻",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/moonlit-silver-suite/1.0.0/moonlit-silver-suite-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/moonlit-silver-suite/1.0.0/moonlit-silver-suite-4k-v1.mp4",
+  "size": 9871483,
+  "sha256": "19271eff7a05169e129d2906f20e3d8dd3c58e2a60664b3b90ba50caffba6f29"
+ },
+ {
+  "id": "teal-laundry-night",
+  "name": "青灯洗衣夜",
+  "detail": "青灯、雨窗与静谧洗衣房",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/teal-laundry-night/1.0.0/teal-laundry-night-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/teal-laundry-night/1.0.0/teal-laundry-night-4k-v1.mp4",
+  "size": 6591611,
+  "sha256": "9488d7b3427758d356cd3cc0e76158f402cc50b6167d34a870420bbb55bd799f"
+ },
+ {
+  "id": "crimson-cat-boudoir",
+  "name": "绯帐猫影",
+  "detail": "绯帐、猫影与深红卧室",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/crimson-cat-boudoir/1.0.0/crimson-cat-boudoir-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/crimson-cat-boudoir/1.0.0/crimson-cat-boudoir-4k-v1.mp4",
+  "size": 13673328,
+  "sha256": "d57f775ea7c2925bffa56273c73fed9f030a7c8c6034c910b2eb2b66366bdf6e"
+ },
+ {
+  "id": "scarlet-office-repose",
+  "name": "绯黑午憩",
+  "detail": "绯衣、办公椅与明亮午后",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/scarlet-office-repose/1.0.0/scarlet-office-repose-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/scarlet-office-repose/1.0.0/scarlet-office-repose-4k-v1.mp4",
+  "size": 6217151,
+  "sha256": "732614368037bdce792c4e89fa3d0d20b80912d8d8f1e94e9e2964fb12b0230c"
+ },
+ {
+  "id": "petal-bath-glow",
+  "name": "花瓣沐光",
+  "detail": "花瓣、暖浴与奶油晨光",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/petal-bath-glow/1.0.0/petal-bath-glow-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/petal-bath-glow/1.0.0/petal-bath-glow-4k-v1.mp4",
+  "size": 23328484,
+  "sha256": "dcf5997c6bdda356735810c8db67e0c7ad67c9fb922f8e5f6adab9f51323b58c"
+ },
+ {
+  "id": "neon-cat-command",
+  "name": "霓夜猫舱",
+  "detail": "霓虹、猫影与紫电终端",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/neon-cat-command/1.0.0/neon-cat-command-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/neon-cat-command/1.0.0/neon-cat-command-4k-v1.mp4",
+  "size": 12180679,
+  "sha256": "99609cac09123ea05494ddda78e74971aad5c17c1e0769926c56ea37da428a4e"
+ },
+ {
+  "id": "jade-door-evening",
+  "name": "翠门晚宴",
+  "detail": "翠衣、深木门与静夜客厅",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/jade-door-evening/1.0.0/jade-door-evening-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/jade-door-evening/1.0.0/jade-door-evening-4k-v1.mp4",
+  "size": 20461081,
+  "sha256": "0925d3cb80dfce5629966778929e516cf9fd0955b3b7ffb90ad3099f41f36a4e"
+ },
+ {
+  "id": "ivory-cat-workshop",
+  "name": "象牙猫坊",
+  "detail": "象牙白、猫耳与创意工作间",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/ivory-cat-workshop/1.0.0/ivory-cat-workshop-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/ivory-cat-workshop/1.0.0/ivory-cat-workshop-4k-v1.mp4",
+  "size": 9354353,
+  "sha256": "dbc2cd55ce883e5de2eaae5158591de1609d765584fa815eff1e50e6d5376980"
+ },
+ {
+  "id": "violet-cat-bedroom",
+  "name": "紫梦猫室",
+  "detail": "紫灯、猫耳与慵懒卧室",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/violet-cat-bedroom/1.0.0/violet-cat-bedroom-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/violet-cat-bedroom/1.0.0/violet-cat-bedroom-4k-v1.mp4",
+  "size": 17353418,
+  "sha256": "050687c5c94e87306a63bfb5b6017746100381ea573676c7e72ba8189cef46ba"
+ },
+ {
+  "id": "silver-veil-studio",
+  "name": "银纱片场",
+  "detail": "银纱、摄影灯与静谧片场",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/silver-veil-studio/1.0.0/silver-veil-studio-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/silver-veil-studio/1.0.0/silver-veil-studio-4k-v1.mp4",
+  "size": 13577068,
+  "sha256": "e7a85f3428df88d64ef78a40540869d9c907521a276d8809e72b827fb1e54fd3"
+ },
+ {
+  "id": "firework-summer-shore",
+  "name": "焰海夏夜",
+  "detail": "烟花、海岸与珊瑚夏夜",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/firework-summer-shore/1.0.0/firework-summer-shore-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/firework-summer-shore/1.0.0/firework-summer-shore-4k-v1.mp4",
+  "size": 4861878,
+  "sha256": "75957b53059c26dd9f951609a870f2927949ff9b29f08bf16ab97a2896d7d701"
+ },
+ {
+  "id": "sunlit-jade-room",
+  "name": "晴窗翠影",
+  "detail": "晴窗、翠发与柔白居室",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/sunlit-jade-room/1.0.0/sunlit-jade-room-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/sunlit-jade-room/1.0.0/sunlit-jade-room-4k-v1.mp4",
+  "size": 8560809,
+  "sha256": "e73e951962b8547109b02b18b6375155eee9d1e75a84409fab4a53a11423260a"
+ },
+ {
+  "id": "warm-kitchen-morning",
+  "name": "暖厨晨光",
+  "detail": "木厨、晨光与温暖日常",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/warm-kitchen-morning/1.0.0/warm-kitchen-morning-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/warm-kitchen-morning/1.0.0/warm-kitchen-morning-4k-v1.mp4",
+  "size": 10737003,
+  "sha256": "46eef156f31308b38fbcf53eeb2c41517493495fc329d1917b28b04d95b700b6"
+ },
+ {
+  "id": "curtain-morning-glimpse",
+  "name": "帘后晨光",
+  "detail": "白帘、暖木与私语晨光",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/curtain-morning-glimpse/1.0.0/curtain-morning-glimpse-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/curtain-morning-glimpse/1.0.0/curtain-morning-glimpse-4k-v1.mp4",
+  "size": 9578247,
+  "sha256": "4ae9ad7c99e3b4369b3ce25956f52098fc84a0c53735fe6bcd898fca396cdc02"
+ },
+ {
+  "id": "sunlit-shallow-tide",
+  "name": "晴海浅浪",
+  "detail": "晴空、浅浪与透蓝海岸",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/sunlit-shallow-tide/1.0.0/sunlit-shallow-tide-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/sunlit-shallow-tide/1.0.0/sunlit-shallow-tide-4k-v1.mp4",
+  "size": 17031808,
+  "sha256": "98a15018402249d04ad90e2fb55875b5c60135ff0f2d56681404b5a012690929"
+ },
+ {
+  "id": "moonlit-silver-court",
+  "name": "月庭银纱",
+  "detail": "月庭、银纱与冰蓝宫灯",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/moonlit-silver-court/1.0.0/moonlit-silver-court-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/moonlit-silver-court/1.0.0/moonlit-silver-court-4k-v1.mp4",
+  "size": 19338334,
+  "sha256": "f1e164876b40459ca64be501bac959425b190b1dd423f3e8fd65a8a127427959"
+ },
+ {
+  "id": "azure-racing-pit",
+  "name": "极速蓝影",
+  "detail": "晴蓝、赛车与赛道疾风",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/azure-racing-pit/1.0.0/azure-racing-pit-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/azure-racing-pit/1.0.0/azure-racing-pit-4k-v1.mp4",
+  "size": 24279802,
+  "sha256": "20487ad018d1c0425f443d2f88d6c8db4b97b73799ac4d21024659171295379a"
+ },
+ {
+  "id": "ember-library-lounge",
+  "name": "炉火书廊",
+  "detail": "壁炉、藏书与深红软榻",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/ember-library-lounge/1.0.0/ember-library-lounge-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/ember-library-lounge/1.0.0/ember-library-lounge-4k-v1.mp4",
+  "size": 6741394,
+  "sha256": "ef81061aa693c49fb1d985198ae8cd0d31ec09226741a043ac6c9dcada0d9f6a"
+ },
+ {
+  "id": "emerald-night-bar",
+  "name": "翠夜酒廊",
+  "detail": "翠灯、夜吧与酒红倩影",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/emerald-night-bar/1.0.0/emerald-night-bar-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/emerald-night-bar/1.0.0/emerald-night-bar-4k-v1.mp4",
+  "size": 4879714,
+  "sha256": "36214ddfc2cdd76553672fc579b4aa138ccde33bdf389ba43572a86c12fdcd15"
+ },
+ {
+  "id": "sunlit-violet-pool",
+  "name": "紫阳池畔",
+  "detail": "晴池、柠檬浮圈与紫色夏影",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/sunlit-violet-pool/1.0.0/sunlit-violet-pool-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/sunlit-violet-pool/1.0.0/sunlit-violet-pool-4k-v1.mp4",
+  "size": 10760559,
+  "sha256": "0aed10dfe4fb08ebaa7f2c2bd3bd6b0481823be2bbbd36aba54f9a8ea1a7ac0a"
+ },
+ {
+  "id": "rose-orbit-chamber",
+  "name": "绯粉星舱",
+  "detail": "绯粉、轨道舷窗与失重梦境",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/rose-orbit-chamber/1.0.0/rose-orbit-chamber-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/rose-orbit-chamber/1.0.0/rose-orbit-chamber-4k-v1.mp4",
+  "size": 7308565,
+  "sha256": "2d1444dee644cd67e65521135ffaf131047ac11f3b69ae430c34726e8963033d"
+ },
+ {
+  "id": "mint-clinic-morning",
+  "name": "薄荷诊室",
+  "detail": "薄荷帘幕、晨光与白色诊室",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/mint-clinic-morning/1.0.0/mint-clinic-morning-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/mint-clinic-morning/1.0.0/mint-clinic-morning-4k-v1.mp4",
+  "size": 15839869,
+  "sha256": "450de48e5e10d4b005d25eaf4bf56410a9665967b269a8ee473e423919a56261"
+ },
+ {
+  "id": "violet-cyber-lounge",
+  "name": "紫电云舱",
+  "detail": "紫电、云舱与未来长椅",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/violet-cyber-lounge/1.0.0/violet-cyber-lounge-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/violet-cyber-lounge/1.0.0/violet-cyber-lounge-4k-v1.mp4",
+  "size": 20482132,
+  "sha256": "82fb574490f909782b0eeb5ceb0017d15f583790b24741107575c44ffbc5fa8f"
+ },
+ {
+  "id": "emerald-jungle-drift",
+  "name": "翠境林息",
+  "detail": "林叶、溪光与翡翠午憩",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/emerald-jungle-drift/1.0.0/emerald-jungle-drift-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/emerald-jungle-drift/1.0.0/emerald-jungle-drift-4k-v1.mp4",
+  "size": 18837294,
+  "sha256": "efbde086902189284a5fb7c8519ab021e64462d9324ca973d16f29303996d869"
+ },
+ {
+  "id": "abyssal-jellyfish-throne",
+  "name": "紫渊水母宫",
+  "detail": "紫渊、浮游水母与星潮王座",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/abyssal-jellyfish-throne/1.0.0/abyssal-jellyfish-throne-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/abyssal-jellyfish-throne/1.0.0/abyssal-jellyfish-throne-4k-v1.mp4",
+  "size": 19870940,
+  "sha256": "53390e677ec78955db023f2fc9cf39022a121b7f5fc1c0457287f5e3d5aa8147"
+ },
+ {
+  "id": "gilded-shadow-sanctum",
+  "name": "金影圣庭",
+  "detail": "鎏金、圣阶与黑白双影",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/gilded-shadow-sanctum/1.0.0/gilded-shadow-sanctum-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/gilded-shadow-sanctum/1.0.0/gilded-shadow-sanctum-4k-v1.mp4",
+  "size": 30431582,
+  "sha256": "a0aff5f18b68caef3eb47a2ce789e4ec96fbe9cfabe9d22fbd5aeac316f6f7b2"
+ },
+ {
+  "id": "moonlit-aqua-kimono",
+  "name": "月青花榻",
+  "detail": "月青、花枝与轻纱和服",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/moonlit-aqua-kimono/1.0.0/moonlit-aqua-kimono-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/moonlit-aqua-kimono/1.0.0/moonlit-aqua-kimono-4k-v1.mp4",
+  "size": 5270343,
+  "sha256": "406ca89da3add619aef0276ce55e64b51e708c217edae9c0ac3000f3af779414"
+ },
+ {
+  "id": "crimson-silk-chamber",
+  "name": "绛纱夜榻",
+  "detail": "绛纱、夜榻与墨色花影",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/crimson-silk-chamber/1.0.0/crimson-silk-chamber-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/crimson-silk-chamber/1.0.0/crimson-silk-chamber-4k-v1.mp4",
+  "size": 30724880,
+  "sha256": "c55f26b2c6bc264b46d0e3271bb1c00169b877691b11b66a26b17aad79fa5d46"
+ },
+ {
+  "id": "lavender-fox-cove",
+  "name": "雾紫澄湾",
+  "detail": "浅湾、岩岸与雾紫狐影",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/lavender-fox-cove/1.0.0/lavender-fox-cove-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/lavender-fox-cove/1.0.0/lavender-fox-cove-4k-v1.mp4",
+  "size": 10429011,
+  "sha256": "5c0cfc3f41aad447b4d800b7cb84dfbc8180623f5e730afc3369d74120718624"
+ },
+ {
+  "id": "neon-gold-lift",
+  "name": "霓金夜购",
+  "detail": "金梯、兔猫与漫游购物袋",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/neon-gold-lift/1.0.0/neon-gold-lift-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/neon-gold-lift/1.0.0/neon-gold-lift-4k-v1.mp4",
+  "size": 19274722,
+  "sha256": "0b4ec0d247ba52e639eaca4611956d9046d7f7d401af69aa0f7cb74c224a25a1"
+ },
+ {
+  "id": "scarlet-thread-gallery",
+  "name": "绯线秘馆",
+  "detail": "藏画、留声机与绯红光网",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/scarlet-thread-gallery/1.0.0/scarlet-thread-gallery-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/scarlet-thread-gallery/1.0.0/scarlet-thread-gallery-4k-v1.mp4",
+  "size": 19515260,
+  "sha256": "3938452e279bf37391a77f2dbcb77782942aa9705a0d85e71780760076f98ab9"
+ },
+ {
+  "id": "violet-starlit-lagoon",
+  "name": "紫汐星湾",
+  "detail": "星夜、紫潮与银白花影",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/violet-starlit-lagoon/1.0.0/violet-starlit-lagoon-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/violet-starlit-lagoon/1.0.0/violet-starlit-lagoon-4k-v1.mp4",
+  "size": 14917128,
+  "sha256": "2a758b11a9b002af1e8a87ddd68d53aa87496771ef7832a809e8f6161de8821a"
+ },
+ {
+  "id": "crimson-summer-cove",
+  "name": "绯夏晴湾",
+  "detail": "晴空、白浪与绯红发影",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/crimson-summer-cove/1.0.0/crimson-summer-cove-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/crimson-summer-cove/1.0.0/crimson-summer-cove-4k-v1.mp4",
+  "size": 29158330,
+  "sha256": "43cb6bb1b0548f884e56dd9da97ecc87e90fc02ca1c6caf803ebe14815821ec3"
+ },
+ {
+  "id": "aqua-bubble-cove",
+  "name": "碧海泡影",
+  "detail": "青碧海湾与玫红气泡",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/aqua-bubble-cove/1.0.0/aqua-bubble-cove-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/aqua-bubble-cove/1.0.0/aqua-bubble-cove-4k-v1.mp4",
+  "size": 21911507,
+  "sha256": "10e20e7e587484dafc85e0d082e84631ffdc8725aeba73d0f1b59d6686729339"
+ },
+ {
+  "id": "gilded-bunny-table",
+  "name": "鎏金兔局",
+  "detail": "牌桌、骰子与鎏金兔影",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/gilded-bunny-table/1.0.0/gilded-bunny-table-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/gilded-bunny-table/1.0.0/gilded-bunny-table-4k-v1.mp4",
+  "size": 9930720,
+  "sha256": "9397d928e41f7b4a0f36720b7d10702edfef76208b8321267ab3e0d652740e35"
+ },
+ {
+  "id": "sunlit-ramune-shore",
+  "name": "晴澜汽水",
+  "detail": "晴空、白云与清凉汽水蓝",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/sunlit-ramune-shore/1.0.0/sunlit-ramune-shore-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/sunlit-ramune-shore/1.0.0/sunlit-ramune-shore-4k-v1.mp4",
+  "size": 16264565,
+  "sha256": "9ab1979c60573cdda6da798527edc6c9f97f40594d3ea8d81a6ebde0d2365bfa"
+ },
+ {
+  "id": "crimson-wing-starpool",
+  "name": "绯翼星池",
+  "detail": "星空、霓虹泳池与绯翼魅影",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/crimson-wing-starpool/1.0.0/crimson-wing-starpool-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/crimson-wing-starpool/1.0.0/crimson-wing-starpool-4k-v1.mp4",
+  "size": 21797898,
+  "sha256": "56d28f7313aac9171c27f264b7c05b8ca278cdd88d800fd93543127cf28864df"
+ },
+ {
+  "id": "sunlit-emerald-lounge",
+  "name": "绿幕午憩",
+  "detail": "暖日、青帘与慵懒果香",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/sunlit-emerald-lounge/1.0.0/sunlit-emerald-lounge-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/sunlit-emerald-lounge/1.0.0/sunlit-emerald-lounge-4k-v1.mp4",
+  "size": 18479219,
+  "sha256": "e71287b78cdc2495cd34b9298818fc8b0a7198d33470f8243faa5e991cbb0f1f"
+ },
+ {
+  "id": "rose-bath-night",
+  "name": "蔷薇浴夜",
+  "detail": "花瓣、水光与紫夜微醺",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/rose-bath-night/1.0.1/rose-bath-night-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/rose-bath-night/1.0.1/rose-bath-night-4k-v1.mp4",
+  "size": 21068651,
+  "sha256": "cf929d89cd446ea293d09e9759bc5c2aeb56bd3712acc9bc312ffef9820a8882"
+ },
+ {
+  "id": "starry-night-swim",
+  "name": "星海夜泳",
+  "detail": "烟火、星湾与夏夜水光",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/starry-night-swim/1.0.1/starry-night-swim-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/starry-night-swim/1.0.1/starry-night-swim-4k-v1.mp4",
+  "size": 100703733,
+  "sha256": "e7b153aa43eef422dacc8aa11cc89bee8319dac26d9e083e9a421da50d6d2da0"
+ },
+ {
+  "id": "scorching-summer-heartbeat",
+  "name": "灼夏心跳",
+  "detail": "暖阳、热汗与跃动红影",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/scorching-summer-heartbeat/1.0.1/scorching-summer-heartbeat-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/scorching-summer-heartbeat/1.0.1/scorching-summer-heartbeat-v1.mp4",
+  "size": 3213741,
+  "sha256": "72c1417f7181aff8ddb0ab3e8eb274fcb8e7f5a06fb19e80705a4f3bbba588d2"
+ },
+ {
+  "id": "night-banquet-bunny",
+  "name": "夜宴兔影",
+  "detail": "暖金酒馆、银发兔影与午夜微醺",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/night-banquet-bunny/1.0.1/night-banquet-bunny-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/night-banquet-bunny/1.0.1/night-banquet-bunny-4k-v1.mp4",
+  "size": 15856558,
+  "sha256": "d4a9421e41b7bae76896bc68f3967930cefe4a2ee73bedd7a355054d4a6dc079"
+ },
+ {
+  "id": "amiya-night-reading",
+  "name": "阿米娅·夜读",
+  "detail": "猫影、旧书与暖红暮光",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/amiya-night-reading/1.0.0/amiya-night-reading-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/amiya-night-reading/1.0.0/amiya-night-reading-4k30-v1.mp4",
+  "size": 29924378,
+  "sha256": "3e74840fae02d84cd9385fbed3986409cca3ea048366cd1f5b63fe1fad3818da"
+ },
+ {
+  "id": "taihou-sadako",
+  "name": "大凤·贞子",
+  "detail": "旧电视、幽青冷光与赤瞳",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/taihou-sadako/1.0.0/taihou-sadako-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/taihou-sadako/1.0.0/taihou-sadako-4k60-v1.mp4",
+  "size": 10060920,
+  "sha256": "a77f8914bd331101ea9b12ddd4d02d797edcb2f2a11e27fa2eec6bfd07ac2c26"
+ },
+ {
+  "id": "roxy",
+  "name": "洛琪希",
+  "detail": "蓝发、魔法与静夜回忆",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/roxy/1.0.0/roxy-poster-v1.jpg",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/roxy/1.0.0/roxy-4k-60fps-v1.mp4",
+  "size": 195658341,
+  "sha256": "5ae7945c401c8b193a87aea3d6f2899ebd87db816add02369e09cd20db049962"
+ },
+ {
+  "id": "ayaka-beautiful",
+  "name": "神里美如画",
+  "detail": "樱庭、清池与神里绫华",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/ayaka-beautiful/1.0.0/ayaka-beautiful-poster-v1.png",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/ayaka-beautiful/1.0.0/ayaka-beautiful-4k60-v1.mp4",
+  "size": 64924281,
+  "sha256": "2a63a303bac2dc02f6a36ec4ff3dc1292e5e492b9ee830d8e5c1352336c8dec4"
+ },
+ {
+  "id": "double-happiness",
+  "name": "囍",
+  "detail": "朱红婚绸、鎏金与翡翠良缘",
+  "cover": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/double-happiness/1.0.0/double-happiness-poster-v1.png",
+  "video": "https://modora-store-api.huihuicn.org/assets/themes/dynamic-wallpaper/double-happiness/1.0.0/double-happiness-video-v1.mp4",
+  "size": 99337132,
+  "sha256": "7ae9410422c59d123ff8a7bc9fdf2cd55506e1ac17d909f40fa95d864453f272"
+ }
+]

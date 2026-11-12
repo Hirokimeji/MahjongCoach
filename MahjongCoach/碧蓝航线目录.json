@@ -1,0 +1,895 @@
+{
+ "base": "https://raw.githubusercontent.com/Chaoray/AzurLane-Live2D-Viewer/main/",
+ "models": {
+  "abeikelongbi_3": {
+   "name": "阿贝克隆比 · 坏坏兔的恶作剧！",
+   "model": "live2d/abeikelongbi_3/abeikelongbi_3.model3.json",
+   "thumb": "shipmodels/abeikelongbi_3.png"
+  },
+  "abeikelongbi_3_hx": {
+   "name": "阿贝克隆比 · 坏坏兔的恶作剧！（差分）",
+   "model": "live2d/abeikelongbi_3_hx/abeikelongbi_3_hx.model3.json",
+   "thumb": "shipmodels/abeikelongbi_3.png"
+  },
+  "adaerbote_2": {
+   "name": "{namecode:455} · 闭店后的特别时光",
+   "model": "live2d/adaerbote_2/adaerbote_2.model3.json",
+   "thumb": "shipmodels/adaerbote_2.png"
+  },
+  "aerbien_3": {
+   "name": "阿尔比恩 · 香气来朱阁",
+   "model": "live2d/aerbien_3/aerbien_3.model3.json",
+   "thumb": "shipmodels/aerbien_3.png"
+  },
+  "aersasi_2": {
+   "name": "阿尔萨斯 · 盛夏的圣迹",
+   "model": "live2d/aersasi_2/aersasi_2.model3.json",
+   "thumb": "shipmodels/aersasi_2.png"
+  },
+  "aidang_2": {
+   "name": "爱宕 · 盛夏进行曲",
+   "model": "live2d/aidang_2/aidang_2.model3.json",
+   "thumb": "shipmodels/aidang_2.png"
+  },
+  "aierdeliqi_4": {
+   "name": "埃尔德里奇 · 正月的牵手",
+   "model": "live2d/aierdeliqi_4/aierdeliqi_4.model3.json",
+   "thumb": "shipmodels/aierdeliqi_4.png"
+  },
+  "aierdeliqi_5": {
+   "name": "埃尔德里奇 · 喵喵偶像团？",
+   "model": "live2d/aierdeliqi_5/aierdeliqi_5.model3.json",
+   "thumb": "shipmodels/aierdeliqi_5.png"
+  },
+  "aijier_2": {
+   "name": "{namecode:480} · 港区的龙女仆",
+   "model": "live2d/aijier_2/aijier_2.model3.json",
+   "thumb": "shipmodels/aijier_2.png"
+  },
+  "aijier_3": {
+   "name": "{namecode:480} · 金龙腾祥云",
+   "model": "live2d/aijier_3/aijier_3.model3.json",
+   "thumb": "shipmodels/aijier_3.png"
+  },
+  "ailunsamuna_2": {
+   "name": "艾伦·萨姆纳 · Charming Rabbit",
+   "model": "live2d/ailunsamuna_2/ailunsamuna_2.model3.json",
+   "thumb": "shipmodels/ailunsamuna_2.png"
+  },
+  "ailunsamuna_2_hx": {
+   "name": "艾伦·萨姆纳 · Charming Rabbit（差分）",
+   "model": "live2d/ailunsamuna_2_hx/ailunsamuna_2_hx.model3.json",
+   "thumb": "shipmodels/ailunsamuna_2.png"
+  },
+  "ailunsamuna_3": {
+   "name": "艾伦·萨姆纳 · 双面侠盗",
+   "model": "live2d/ailunsamuna_3/ailunsamuna_3.model3.json",
+   "thumb": "shipmodels/ailunsamuna_3.png"
+  },
+  "aimierbeierding_2": {
+   "name": "埃米尔·贝尔汀",
+   "model": "live2d/aimierbeierding_2/aimierbeierding_2.model3.json",
+   "thumb": "shipmodels/aimierbeierding_2.png"
+  },
+  "aimierbeierding_3": {
+   "name": "埃米尔·贝尔汀 · 「女仆」浪漫",
+   "model": "live2d/aimierbeierding_3/aimierbeierding_3.model3.json",
+   "thumb": "shipmodels/aimierbeierding_3.png"
+  },
+  "aimierbeierding_3_hx": {
+   "name": "埃米尔·贝尔汀 · 「女仆」浪漫（差分）",
+   "model": "live2d/aimierbeierding_3_hx/aimierbeierding_3_hx.model3.json",
+   "thumb": "shipmodels/aimierbeierding_3.png"
+  },
+  "aimudeng_2": {
+   "name": "{namecode:448} · 黑白的夜之主",
+   "model": "live2d/aimudeng_2/aimudeng_2.model3.json",
+   "thumb": "shipmodels/aimudeng_2.png"
+  },
+  "aimudeng_2_hx": {
+   "name": "{namecode:448} · 黑白的夜之主（差分）",
+   "model": "live2d/aimudeng_2_hx/aimudeng_2_hx.model3.json",
+   "thumb": "shipmodels/aimudeng_2.png"
+  },
+  "aisaikesi_4": {
+   "name": "埃塞克斯 · Craft Fairytail",
+   "model": "live2d/aisaikesi_4/aisaikesi_4.model3.json",
+   "thumb": "shipmodels/aisaikesi_4.png"
+  },
+  "ankeleiqi_2": {
+   "name": "安克雷奇 · 海豚、海洋、游泳课",
+   "model": "live2d/ankeleiqi_2/ankeleiqi_2.model3.json",
+   "thumb": "shipmodels/ankeleiqi_2.png"
+  },
+  "ankeleiqi_2_hx": {
+   "name": "安克雷奇 · 海豚、海洋、游泳课（差分）",
+   "model": "live2d/ankeleiqi_2_hx/ankeleiqi_2_hx.model3.json",
+   "thumb": "shipmodels/ankeleiqi_2.png"
+  },
+  "ankeleiqi_3": {
+   "name": "安克雷奇 · 舟畔共明月",
+   "model": "live2d/ankeleiqi_3/ankeleiqi_3.model3.json",
+   "thumb": "shipmodels/ankeleiqi_3.png"
+  },
+  "baerdimo_5": {
+   "name": "巴尔的摩 · 夜风Minuet",
+   "model": "live2d/baerdimo_5/baerdimo_5.model3.json",
+   "thumb": "shipmodels/baerdimo_5.png"
+  },
+  "baerdimo_6": {
+   "name": "巴尔的摩 · 迅疾的蓝星",
+   "model": "live2d/baerdimo_6/baerdimo_6.model3.json",
+   "thumb": "shipmodels/baerdimo_6.png"
+  },
+  "bailong_3": {
+   "name": "{namecode:204} · 丝竹喧阗",
+   "model": "live2d/bailong_3/bailong_3.model3.json",
+   "thumb": "shipmodels/bailong_3.png"
+  },
+  "banrenma_2": {
+   "name": "半人马 · 沙滨的水之精灵",
+   "model": "live2d/banrenma_2/banrenma_2.model3.json",
+   "thumb": "shipmodels/banrenma_2.png"
+  },
+  "beianpudunii_2": {
+   "name": "beianpudunii_2",
+   "model": "live2d/beianpudunii_2/beianpudunii_2.model3.json",
+   "thumb": "shipmodels/beianpudunii_2.png"
+  },
+  "beierfasite_2": {
+   "name": "贝尔法斯特 · 彩云之玫瑰",
+   "model": "live2d/beierfasite_2/beierfasite_2.model3.json",
+   "thumb": "shipmodels/beierfasite_2.png"
+  },
+  "beikaluolaina_2": {
+   "name": "北卡罗来纳 · 秘密的换装练习？",
+   "model": "live2d/beikaluolaina_2/beikaluolaina_2.model3.json",
+   "thumb": "shipmodels/beikaluolaina_2.png"
+  },
+  "beikaluolaina_2_hx": {
+   "name": "北卡罗来纳 · 秘密的换装练习？（差分）",
+   "model": "live2d/beikaluolaina_2_hx/beikaluolaina_2_hx.model3.json",
+   "thumb": "shipmodels/beikaluolaina_2.png"
+  },
+  "biaoqiang": {
+   "name": "标枪",
+   "model": "live2d/biaoqiang/biaoqiang.model3.json",
+   "thumb": "shipmodels/biaoqiang.png"
+  },
+  "biaoqiang_3": {
+   "name": "标枪 · 沙滩野餐会",
+   "model": "live2d/biaoqiang_3/biaoqiang_3.model3.json",
+   "thumb": "shipmodels/biaoqiang_3.png"
+  },
+  "bisimai_2": {
+   "name": "{namecode:435} · 铁血的辉光",
+   "model": "live2d/bisimai_2/bisimai_2.model3.json",
+   "thumb": "shipmodels/bisimai_2.png"
+  },
+  "bola_2": {
+   "name": "波拉 · 水边的事故？",
+   "model": "live2d/bola_2/bola_2.model3.json",
+   "thumb": "shipmodels/bola_2.png"
+  },
+  "boyixi_2": {
+   "name": "{namecode:197} · 羞怯的蓝宝石",
+   "model": "live2d/boyixi_2/boyixi_2.model3.json",
+   "thumb": "shipmodels/boyixi_2.png"
+  },
+  "bulaimodun_2": {
+   "name": "布莱默顿 · Happy Dating！",
+   "model": "live2d/bulaimodun_2/bulaimodun_2.model3.json",
+   "thumb": "shipmodels/bulaimodun_2.png"
+  },
+  "bulaimodun_4": {
+   "name": "布莱默顿 · 功夫少女！",
+   "model": "live2d/bulaimodun_4/bulaimodun_4.model3.json",
+   "thumb": "shipmodels/bulaimodun_4.png"
+  },
+  "bulaimodun_5": {
+   "name": "布莱默顿 · 悠然放松时光",
+   "model": "live2d/bulaimodun_5/bulaimodun_5.model3.json",
+   "thumb": "shipmodels/bulaimodun_5.png"
+  },
+  "buleisite_2": {
+   "name": "布雷斯特 · 苍海织歌",
+   "model": "live2d/buleisite_2/buleisite_2.model3.json",
+   "thumb": "shipmodels/buleisite_2.png"
+  },
+  "chaijun_3": {
+   "name": "柴郡 · 音乐绚烂CaitSith",
+   "model": "live2d/chaijun_3/chaijun_3.model3.json",
+   "thumb": "shipmodels/chaijun_3.png"
+  },
+  "chaijun_4": {
+   "name": "柴郡 · 冰雪公主",
+   "model": "live2d/chaijun_4/chaijun_4.model3.json",
+   "thumb": "shipmodels/chaijun_4.png"
+  },
+  "chaijun_4_hx": {
+   "name": "柴郡 · 冰雪公主（差分）",
+   "model": "live2d/chaijun_4_hx/chaijun_4_hx.model3.json",
+   "thumb": "shipmodels/chaijun_4.png"
+  },
+  "chicheng_5": {
+   "name": "{namecode:91} · 朝凰来仪",
+   "model": "live2d/chicheng_5/chicheng_5.model3.json",
+   "thumb": "shipmodels/chicheng_5.png"
+  },
+  "chuixue_3": {
+   "name": "{namecode:2} · Music Pixy",
+   "model": "live2d/chuixue_3/chuixue_3.model3.json",
+   "thumb": "shipmodels/chuixue_3.png"
+  },
+  "chuyue_2": {
+   "name": "{namecode:189} · 八月恋夏",
+   "model": "live2d/chuyue_2/chuyue_2.model3.json",
+   "thumb": "shipmodels/chuyue_2.png"
+  },
+  "dafeng_2": {
+   "name": "{namecode:97} · 毒苹果",
+   "model": "live2d/dafeng_2/dafeng_2.model3.json",
+   "thumb": "shipmodels/dafeng_2.png"
+  },
+  "dafeng_2_hx": {
+   "name": "{namecode:97} · 毒苹果（差分）",
+   "model": "live2d/dafeng_2_hx/dafeng_2_hx.model3.json",
+   "thumb": "shipmodels/dafeng_2.png"
+  },
+  "dafeng_3": {
+   "name": "{namecode:97} · 放学后的甜蜜时光",
+   "model": "live2d/dafeng_3/dafeng_3.model3.json",
+   "thumb": "shipmodels/dafeng_3.png"
+  },
+  "dafeng_4": {
+   "name": "{namecode:97} · 凤鸣春晓",
+   "model": "live2d/dafeng_4/dafeng_4.model3.json",
+   "thumb": "shipmodels/dafeng_4.png"
+  },
+  "dafeng_6": {
+   "name": "{namecode:97} · 海滨的白日美梦",
+   "model": "live2d/dafeng_6/dafeng_6.model3.json",
+   "thumb": "shipmodels/dafeng_6.png"
+  },
+  "daofeng_4": {
+   "name": "{namecode:18} · 最速兔兔的邀请函(?)",
+   "model": "live2d/daofeng_4/daofeng_4.model3.json",
+   "thumb": "shipmodels/daofeng_4.png"
+  },
+  "daofeng_5": {
+   "name": "{namecode:18} · 不思议国度的白兔",
+   "model": "live2d/daofeng_5/daofeng_5.model3.json",
+   "thumb": "shipmodels/daofeng_5.png"
+  },
+  "daofeng_5_hx": {
+   "name": "{namecode:18} · 不思议国度的白兔（差分）",
+   "model": "live2d/daofeng_5_hx/daofeng_5_hx.model3.json",
+   "thumb": "shipmodels/daofeng_5.png"
+  },
+  "dewenjun_2": {
+   "name": "德文郡 · 红月下的恶魔",
+   "model": "live2d/dewenjun_2/dewenjun_2.model3.json",
+   "thumb": "shipmodels/dewenjun_2.png"
+  },
+  "deyizhi_3": {
+   "name": "{namecode:429} · 艳阳下的“福利”时间",
+   "model": "live2d/deyizhi_3/deyizhi_3.model3.json",
+   "thumb": "shipmodels/deyizhi_3.png"
+  },
+  "dujiaoshou_4": {
+   "name": "独角兽 · 憧憬的约会日",
+   "model": "live2d/dujiaoshou_4/dujiaoshou_4.model3.json",
+   "thumb": "shipmodels/dujiaoshou_4.png"
+  },
+  "dujiaoshou_6": {
+   "name": "独角兽 · 天使的My Night",
+   "model": "live2d/dujiaoshou_6/dujiaoshou_6.model3.json",
+   "thumb": "shipmodels/dujiaoshou_6.png"
+  },
+  "dunkeerke_2": {
+   "name": "敦刻尔克",
+   "model": "live2d/dunkeerke_2/dunkeerke_2.model3.json",
+   "thumb": "shipmodels/dunkeerke_2.png"
+  },
+  "edu_3": {
+   "name": "恶毒 · 秘密基地的Mercredi",
+   "model": "live2d/edu_3/edu_3.model3.json",
+   "thumb": "shipmodels/edu_3.png"
+  },
+  "edu_3_hx": {
+   "name": "恶毒 · 秘密基地的Mercredi（差分）",
+   "model": "live2d/edu_3_hx/edu_3_hx.model3.json",
+   "thumb": "shipmodels/edu_3.png"
+  },
+  "edu_4": {
+   "name": "恶毒 · 懒懒的白兔",
+   "model": "live2d/edu_4/edu_4.model3.json",
+   "thumb": "shipmodels/edu_4.png"
+  },
+  "fengyun_4": {
+   "name": "{namecode:203} · 热茶与女仆修行",
+   "model": "live2d/fengyun_4/fengyun_4.model3.json",
+   "thumb": "shipmodels/fengyun_4.png"
+  },
+  "geliqiya_2": {
+   "name": "戈里齐亚 · 办公室的“隔阂”",
+   "model": "live2d/geliqiya_2/geliqiya_2.model3.json",
+   "thumb": "shipmodels/geliqiya_2.png"
+  },
+  "genaisennao_2": {
+   "name": "{namecode:434} · 梦魇魅影",
+   "model": "live2d/genaisennao_2/genaisennao_2.model3.json",
+   "thumb": "shipmodels/genaisennao_2.png"
+  },
+  "guandao_2": {
+   "name": "关岛 · 魅力舞台",
+   "model": "live2d/guandao_2/guandao_2.model3.json",
+   "thumb": "shipmodels/guandao_2.png"
+  },
+  "guangrong_3": {
+   "name": "光荣 · 凉夜香雪",
+   "model": "live2d/guangrong_3/guangrong_3.model3.json",
+   "thumb": "shipmodels/guangrong_3.png"
+  },
+  "hailunna_4": {
+   "name": "海伦娜 · 耀眼的波纹",
+   "model": "live2d/hailunna_4/hailunna_4.model3.json",
+   "thumb": "shipmodels/hailunna_4.png"
+  },
+  "haiyinlixi_2": {
+   "name": "{namecode:453} · 泳池边的救生兔(?)",
+   "model": "live2d/haiyinlixi_2/haiyinlixi_2.model3.json",
+   "thumb": "shipmodels/haiyinlixi_2.png"
+  },
+  "heitaizi_2": {
+   "name": "黑太子 · White Princess",
+   "model": "live2d/heitaizi_2/heitaizi_2.model3.json",
+   "thumb": "shipmodels/heitaizi_2.png"
+  },
+  "hemin_2": {
+   "name": "赫敏 · 纯白的悠闲假日",
+   "model": "live2d/hemin_2/hemin_2.model3.json",
+   "thumb": "shipmodels/hemin_2.png"
+  },
+  "hemin_3": {
+   "name": "赫敏 · 温柔的纯白天使",
+   "model": "live2d/hemin_3/hemin_3.model3.json",
+   "thumb": "shipmodels/hemin_3.png"
+  },
+  "huangjiafangzhou_3": {
+   "name": "皇家方舟 · 晚会的守护者",
+   "model": "live2d/huangjiafangzhou_3/huangjiafangzhou_3.model3.json",
+   "thumb": "shipmodels/huangjiafangzhou_3.png"
+  },
+  "huonululu_3": {
+   "name": "火奴鲁鲁 · 盛夏的「灾难」",
+   "model": "live2d/huonululu_3/huonululu_3.model3.json",
+   "thumb": "shipmodels/huonululu_3.png"
+  },
+  "huonululu_5": {
+   "name": "火奴鲁鲁 · 两人的夏日祭",
+   "model": "live2d/huonululu_5/huonululu_5.model3.json",
+   "thumb": "shipmodels/huonululu_5.png"
+  },
+  "jialisuoniye_3": {
+   "name": "拉·加利索尼埃 · 黑猫与南瓜之夜",
+   "model": "live2d/jialisuoniye_3/jialisuoniye_3.model3.json",
+   "thumb": "shipmodels/jialisuoniye_3.png"
+  },
+  "jialisuoniye_3_hx": {
+   "name": "拉·加利索尼埃 · 黑猫与南瓜之夜（差分）",
+   "model": "live2d/jialisuoniye_3_hx/jialisuoniye_3_hx.model3.json",
+   "thumb": "shipmodels/jialisuoniye_3.png"
+  },
+  "jialisuoniye_4": {
+   "name": "拉·加利索尼埃 · 春晓醉梦",
+   "model": "live2d/jialisuoniye_4/jialisuoniye_4.model3.json",
+   "thumb": "shipmodels/jialisuoniye_4.png"
+  },
+  "jianye_2": {
+   "name": "{namecode:188} · 温泉放松时间",
+   "model": "live2d/jianye_2/jianye_2.model3.json",
+   "thumb": "shipmodels/jianye_2.png"
+  },
+  "jianye_2_hx": {
+   "name": "{namecode:188} · 温泉放松时间（差分）",
+   "model": "live2d/jianye_2_hx/jianye_2_hx.model3.json",
+   "thumb": "shipmodels/jianye_2.png"
+  },
+  "jianye_3": {
+   "name": "{namecode:188} · 绊倒的迷糊女仆",
+   "model": "live2d/jianye_3/jianye_3.model3.json",
+   "thumb": "shipmodels/jianye_3.png"
+  },
+  "jianye_4": {
+   "name": "{namecode:188} · 花绽之乐章",
+   "model": "live2d/jianye_4/jianye_4.model3.json",
+   "thumb": "shipmodels/jianye_4.png"
+  },
+  "jiluofu_3": {
+   "name": "基洛夫 · 疾速截击",
+   "model": "live2d/jiluofu_3/jiluofu_3.model3.json",
+   "thumb": "shipmodels/jiluofu_3.png"
+  },
+  "jinluhao_2": {
+   "name": "金鹿号 · 古堡中的恐怖淑女",
+   "model": "live2d/jinluhao_2/jinluhao_2.model3.json",
+   "thumb": "shipmodels/jinluhao_2.png"
+  },
+  "jiuyun_2": {
+   "name": "{namecode:226} · 团子的诱惑",
+   "model": "live2d/jiuyun_2/jiuyun_2.model3.json",
+   "thumb": "shipmodels/jiuyun_2.png"
+  },
+  "junhe_4": {
+   "name": "{namecode:175} · “不情愿”的圣夜祭",
+   "model": "live2d/junhe_4/junhe_4.model3.json",
+   "thumb": "shipmodels/junhe_4.png"
+  },
+  "junhe_5": {
+   "name": "{namecode:175} · 百花庆云",
+   "model": "live2d/junhe_5/junhe_5.model3.json",
+   "thumb": "shipmodels/junhe_5.png"
+  },
+  "kalangshitade_2": {
+   "name": "喀琅施塔得 · 突击行动开始！",
+   "model": "live2d/kalangshitade_2/kalangshitade_2.model3.json",
+   "thumb": "shipmodels/kalangshitade_2.png"
+  },
+  "kalvbudisi_2": {
+   "name": "卡律布狄斯 · 治愈的红闺",
+   "model": "live2d/kalvbudisi_2/kalvbudisi_2.model3.json",
+   "thumb": "shipmodels/kalvbudisi_2.png"
+  },
+  "kelaimengsuo_2": {
+   "name": "克莱蒙梭 · 金日煦风",
+   "model": "live2d/kelaimengsuo_2/kelaimengsuo_2.model3.json",
+   "thumb": "shipmodels/kelaimengsuo_2.png"
+  },
+  "kelifulan_3": {
+   "name": "克利夫兰 · 骑士之夜",
+   "model": "live2d/kelifulan_3/kelifulan_3.model3.json",
+   "thumb": "shipmodels/kelifulan_3.png"
+  },
+  "kelifulan_8": {
+   "name": "克利夫兰 · 休息室的意外邂逅？",
+   "model": "live2d/kelifulan_8/kelifulan_8.model3.json",
+   "thumb": "shipmodels/kelifulan_8.png"
+  },
+  "kewei_4": {
+   "name": "可畏 · 值日时的春心萌动",
+   "model": "live2d/kewei_4/kewei_4.model3.json",
+   "thumb": "shipmodels/kewei_4.png"
+  },
+  "kubo_2": {
+   "name": "库珀 · 烈日的网球场",
+   "model": "live2d/kubo_2/kubo_2.model3.json",
+   "thumb": "shipmodels/kubo_2.png"
+  },
+  "kuersike_2": {
+   "name": "库尔斯克 · 雾中雪狼",
+   "model": "live2d/kuersike_2/kuersike_2.model3.json",
+   "thumb": "shipmodels/kuersike_2.png"
+  },
+  "lafei": {
+   "name": "拉菲",
+   "model": "live2d/lafei/lafei.model3.json",
+   "thumb": "shipmodels/lafei.png"
+  },
+  "lafeiii_3": {
+   "name": "lafeiii_3",
+   "model": "live2d/lafeiii_3/lafeiii_3.model3.json",
+   "thumb": "shipmodels/lafeiii_3.png"
+  },
+  "lafei_4": {
+   "name": "拉菲 · 白兔迎春",
+   "model": "live2d/lafei_4/lafei_4.model3.json",
+   "thumb": "shipmodels/lafei_4.png"
+  },
+  "leigensibao_2": {
+   "name": "{namecode:516} · 暗之龙，光之岸",
+   "model": "live2d/leigensibao_2/leigensibao_2.model3.json",
+   "thumb": "shipmodels/leigensibao_2.png"
+  },
+  "lingbo": {
+   "name": "{namecode:6}",
+   "model": "live2d/lingbo/lingbo.model3.json",
+   "thumb": "shipmodels/lingbo.png"
+  },
+  "lingbo_10": {
+   "name": "{namecode:6} · 黯然礼装",
+   "model": "live2d/lingbo_10/lingbo_10.model3.json",
+   "thumb": "shipmodels/lingbo_10.png"
+  },
+  "linuo_3": {
+   "name": "里诺 · bunny·reno！",
+   "model": "live2d/linuo_3/linuo_3.model3.json",
+   "thumb": "shipmodels/linuo_3.png"
+  },
+  "linuo_3_hx": {
+   "name": "里诺 · bunny·reno！（差分）",
+   "model": "live2d/linuo_3_hx/linuo_3_hx.model3.json",
+   "thumb": "shipmodels/linuo_3.png"
+  },
+  "lisailiu_2": {
+   "name": "黎塞留 · 潮风的Fleuron",
+   "model": "live2d/lisailiu_2/lisailiu_2.model3.json",
+   "thumb": "shipmodels/lisailiu_2.png"
+  },
+  "lisailiu_3": {
+   "name": "黎塞留 · 常緑Rêve prophétique",
+   "model": "live2d/lisailiu_3/lisailiu_3.model3.json",
+   "thumb": "shipmodels/lisailiu_3.png"
+  },
+  "longfeng_2": {
+   "name": "{namecode:179} · 凤舞新年",
+   "model": "live2d/longfeng_2/longfeng_2.model3.json",
+   "thumb": "shipmodels/longfeng_2.png"
+  },
+  "longfeng_2_hx": {
+   "name": "{namecode:179} · 凤舞新年（差分）",
+   "model": "live2d/longfeng_2_hx/longfeng_2_hx.model3.json",
+   "thumb": "shipmodels/longfeng_2.png"
+  },
+  "longwu_2": {
+   "name": "龙武 · 腾龙新春宴",
+   "model": "live2d/longwu_2/longwu_2.model3.json",
+   "thumb": "shipmodels/longwu_2.png"
+  },
+  "luoen_4": {
+   "name": "{namecode:439} · 苍翠的安眠曲",
+   "model": "live2d/luoen_4/luoen_4.model3.json",
+   "thumb": "shipmodels/luoen_4.png"
+  },
+  "luoma_2": {
+   "name": "罗马 · 午夜的白天鹅",
+   "model": "live2d/luoma_2/luoma_2.model3.json",
+   "thumb": "shipmodels/luoma_2.png"
+  },
+  "lupuleixite_2": {
+   "name": "{namecode:484} · 腾龙戏春？",
+   "model": "live2d/lupuleixite_2/lupuleixite_2.model3.json",
+   "thumb": "shipmodels/lupuleixite_2.png"
+  },
+  "luyijiushi_2": {
+   "name": "路易九世 · 华服的圣骑士",
+   "model": "live2d/luyijiushi_2/luyijiushi_2.model3.json",
+   "thumb": "shipmodels/luyijiushi_2.png"
+  },
+  "lvzuofu_2": {
+   "name": "{namecode:461} · 永夜的赤之贵族",
+   "model": "live2d/lvzuofu_2/lvzuofu_2.model3.json",
+   "thumb": "shipmodels/lvzuofu_2.png"
+  },
+  "maliluosi_3_doa": {
+   "name": "热气蒸腾的女神",
+   "model": "live2d/maliluosi_3_doa/maliluosi_3_doa.model3.json",
+   "thumb": "shipmodels/maliluosi_3_doa.png"
+  },
+  "mingshi": {
+   "name": "{namecode:98}",
+   "model": "live2d/mingshi/mingshi.model3.json",
+   "thumb": "shipmodels/mingshi.png"
+  },
+  "mojiaduoer_2": {
+   "name": "莫加多尔 · 静谧一隅的燥热",
+   "model": "live2d/mojiaduoer_2/mojiaduoer_2.model3.json",
+   "thumb": "shipmodels/mojiaduoer_2.png"
+  },
+  "nengdai_2": {
+   "name": "{namecode:50} · 祭典的秘境?",
+   "model": "live2d/nengdai_2/nengdai_2.model3.json",
+   "thumb": "shipmodels/nengdai_2.png"
+  },
+  "nengdai_3": {
+   "name": "{namecode:50} · 阳光·沙滩·假日",
+   "model": "live2d/nengdai_3/nengdai_3.model3.json",
+   "thumb": "shipmodels/nengdai_3.png"
+  },
+  "ninghai_4": {
+   "name": "宁海 · 东煌姐妹！·N",
+   "model": "live2d/ninghai_4/ninghai_4.model3.json",
+   "thumb": "shipmodels/ninghai_4.png"
+  },
+  "ougen_5": {
+   "name": "{namecode:427} · Final Lap",
+   "model": "live2d/ougen_5/ougen_5.model3.json",
+   "thumb": "shipmodels/ougen_5.png"
+  },
+  "ougen_6": {
+   "name": "{namecode:427} · 沉醉于夜",
+   "model": "live2d/ougen_6/ougen_6.model3.json",
+   "thumb": "shipmodels/ougen_6.png"
+  },
+  "ougen_6_hx": {
+   "name": "{namecode:427} · 沉醉于夜（差分）",
+   "model": "live2d/ougen_6_hx/ougen_6_hx.model3.json",
+   "thumb": "shipmodels/ougen_6.png"
+  },
+  "ouruola_4": {
+   "name": "欧若拉 · 渝城秘技",
+   "model": "live2d/ouruola_4/ouruola_4.model3.json",
+   "thumb": "shipmodels/ouruola_4.png"
+  },
+  "pinghai_4": {
+   "name": "平海 · 东煌姐妹！·P",
+   "model": "live2d/pinghai_4/pinghai_4.model3.json",
+   "thumb": "shipmodels/pinghai_4.png"
+  },
+  "pinghai_6": {
+   "name": "平海 · 甜蜜嫣红",
+   "model": "live2d/pinghai_6/pinghai_6.model3.json",
+   "thumb": "shipmodels/pinghai_6.png"
+  },
+  "qianwei_2": {
+   "name": "前卫-王国军方旗骑士 · 摇摆不定的伪装",
+   "model": "live2d/qianwei_2/qianwei_2.model3.json",
+   "thumb": "shipmodels/qianwei_2.png"
+  },
+  "qibolin_2": {
+   "name": "{namecode:437} · 沙滩上的乌尔德",
+   "model": "live2d/qibolin_2/qibolin_2.model3.json",
+   "thumb": "shipmodels/qibolin_2.png"
+  },
+  "qiershazhi_2": {
+   "name": "奇尔沙治 · Allnight Charge",
+   "model": "live2d/qiershazhi_2/qiershazhi_2.model3.json",
+   "thumb": "shipmodels/qiershazhi_2.png"
+  },
+  "qiye_7": {
+   "name": "企业 · Wind Catcher",
+   "model": "live2d/qiye_7/qiye_7.model3.json",
+   "thumb": "shipmodels/qiye_7.png"
+  },
+  "qiye_7_hx": {
+   "name": "企业 · Wind Catcher（差分）",
+   "model": "live2d/qiye_7_hx/qiye_7_hx.model3.json",
+   "thumb": "shipmodels/qiye_7.png"
+  },
+  "qiye_9": {
+   "name": "企业 · 天际的潜水者",
+   "model": "live2d/qiye_9/qiye_9.model3.json",
+   "thumb": "shipmodels/qiye_9.png"
+  },
+  "rangbaer_3": {
+   "name": "{namecode:523} · 秘密的Après midi",
+   "model": "live2d/rangbaer_3/rangbaer_3.model3.json",
+   "thumb": "shipmodels/rangbaer_3.png"
+  },
+  "rangbaer_4": {
+   "name": "{namecode:523} · 舶刀Première neige",
+   "model": "live2d/rangbaer_4/rangbaer_4.model3.json",
+   "thumb": "shipmodels/rangbaer_4.png"
+  },
+  "shengluyisi_2_hx": {
+   "name": "圣路易斯 · 春之华（差分）",
+   "model": "live2d/shengluyisi_2_hx/shengluyisi_2_hx.model3.json",
+   "thumb": "shipmodels/shengluyisi_2.png"
+  },
+  "shengluyisi_3": {
+   "name": "圣路易斯 · 雪下之饮",
+   "model": "live2d/shengluyisi_3/shengluyisi_3.model3.json",
+   "thumb": "shipmodels/shengluyisi_3.png"
+  },
+  "shengluyisi_4": {
+   "name": "圣路易斯 · Luxury Handle",
+   "model": "live2d/shengluyisi_4/shengluyisi_4.model3.json",
+   "thumb": "shipmodels/shengluyisi_4.png"
+  },
+  "shengluyisi_5": {
+   "name": "圣路易斯 · 邮轮上的诱人午后",
+   "model": "live2d/shengluyisi_5/shengluyisi_5.model3.json",
+   "thumb": "shipmodels/shengluyisi_5.png"
+  },
+  "shitelasai_2": {
+   "name": "{namecode:470} · 节庆的Chronos",
+   "model": "live2d/shitelasai_2/shitelasai_2.model3.json",
+   "thumb": "shipmodels/shitelasai_2.png"
+  },
+  "sipeibojue_5": {
+   "name": "{namecode:430} · 铁血♥最可爱",
+   "model": "live2d/sipeibojue_5/sipeibojue_5.model3.json",
+   "thumb": "shipmodels/sipeibojue_5.png"
+  },
+  "suweiaitongmeng_2": {
+   "name": "{namecode:529} · 天幕危机",
+   "model": "live2d/suweiaitongmeng_2/suweiaitongmeng_2.model3.json",
+   "thumb": "shipmodels/suweiaitongmeng_2.png"
+  },
+  "taiyuan_2": {
+   "name": "太原 · 金蛇闹春",
+   "model": "live2d/taiyuan_2/taiyuan_2.model3.json",
+   "thumb": "shipmodels/taiyuan_2.png"
+  },
+  "tiancheng_3": {
+   "name": "{namecode:161} · 红鸢的闲暇片刻",
+   "model": "live2d/tiancheng_3/tiancheng_3.model3.json",
+   "thumb": "shipmodels/tiancheng_3.png"
+  },
+  "tianlangxing_3": {
+   "name": "天狼星 · 盛夏的Seirios ",
+   "model": "live2d/tianlangxing_3/tianlangxing_3.model3.json",
+   "thumb": "shipmodels/tianlangxing_3.png"
+  },
+  "tierbici_2": {
+   "name": "{namecode:436} · 冰雪消融的夏日",
+   "model": "live2d/tierbici_2/tierbici_2.model3.json",
+   "thumb": "shipmodels/tierbici_2.png"
+  },
+  "weineituo_2": {
+   "name": "维托里奥·维内托 · 拉斯佩齐亚之花",
+   "model": "live2d/weineituo_2/weineituo_2.model3.json",
+   "thumb": "shipmodels/weineituo_2.png"
+  },
+  "weixi_2": {
+   "name": "{namecode:467} · 黯调铅华",
+   "model": "live2d/weixi_2/weixi_2.model3.json",
+   "thumb": "shipmodels/weixi_2.png"
+  },
+  "weiyan_2": {
+   "name": "威严 · 囚牢里的危险兔",
+   "model": "live2d/weiyan_2/weiyan_2.model3.json",
+   "thumb": "shipmodels/weiyan_2.png"
+  },
+  "weiyan_4": {
+   "name": "威严 · 突袭！暗黑基地！",
+   "model": "live2d/weiyan_4/weiyan_4.model3.json",
+   "thumb": "shipmodels/weiyan_4.png"
+  },
+  "weiyan_4_hx": {
+   "name": "威严 · 突袭！暗黑基地！（差分）",
+   "model": "live2d/weiyan_4_hx/weiyan_4_hx.model3.json",
+   "thumb": "shipmodels/weiyan_4.png"
+  },
+  "weiyan_6": {
+   "name": "威严 · 野兔和蒸汽房",
+   "model": "live2d/weiyan_6/weiyan_6.model3.json",
+   "thumb": "shipmodels/weiyan_6.png"
+  },
+  "wuerlixi_2": {
+   "name": "{namecode:463} · Mädchen Trümmer",
+   "model": "live2d/wuerlixi_2/wuerlixi_2.model3.json",
+   "thumb": "shipmodels/wuerlixi_2.png"
+  },
+  "wuerlixi_3": {
+   "name": "{namecode:463} · 一骑绝尘",
+   "model": "live2d/wuerlixi_3/wuerlixi_3.model3.json",
+   "thumb": "shipmodels/wuerlixi_3.png"
+  },
+  "wuqi_2": {
+   "name": "{namecode:165} · 细语春霞",
+   "model": "live2d/wuqi_2/wuqi_2.model3.json",
+   "thumb": "shipmodels/wuqi_2.png"
+  },
+  "xianghe_2": {
+   "name": "{namecode:95} · 散花舞鹤",
+   "model": "live2d/xianghe_2/xianghe_2.model3.json",
+   "thumb": "shipmodels/xianghe_2.png"
+  },
+  "xingdengbao_2": {
+   "name": "{namecode:521} · 微醺胜负",
+   "model": "live2d/xingdengbao_2/xingdengbao_2.model3.json",
+   "thumb": "shipmodels/xingdengbao_2.png"
+  },
+  "xinnong_3": {
+   "name": "{namecode:182} · 轰鸣的银轮",
+   "model": "live2d/xinnong_3/xinnong_3.model3.json",
+   "thumb": "shipmodels/xinnong_3.png"
+  },
+  "xinnong_3_hx": {
+   "name": "{namecode:182} · 轰鸣的银轮（差分）",
+   "model": "live2d/xinnong_3_hx/xinnong_3_hx.model3.json",
+   "thumb": "shipmodels/xinnong_3.png"
+  },
+  "xinnong_4": {
+   "name": "{namecode:182} · 白沙幽梦",
+   "model": "live2d/xinnong_4/xinnong_4.model3.json",
+   "thumb": "shipmodels/xinnong_4.png"
+  },
+  "xinzexi_3": {
+   "name": "{namecode:199} · 盛夏的闲暇",
+   "model": "live2d/xinzexi_3/xinzexi_3.model3.json",
+   "thumb": "shipmodels/xinzexi_3.png"
+  },
+  "xixuegui_4": {
+   "name": "吸血鬼 · 夜姬的正装?",
+   "model": "live2d/xixuegui_4/xixuegui_4.model3.json",
+   "thumb": "shipmodels/xixuegui_4.png"
+  },
+  "xuefeng": {
+   "name": "{namecode:22}",
+   "model": "live2d/xuefeng/xuefeng.model3.json",
+   "thumb": "shipmodels/xuefeng.png"
+  },
+  "xuefeng_3": {
+   "name": "{namecode:22} · 冬之雪风",
+   "model": "live2d/xuefeng_3/xuefeng_3.model3.json",
+   "thumb": "shipmodels/xuefeng_3.png"
+  },
+  "xukufu_2": {
+   "name": "絮库夫 · 购物时光！",
+   "model": "live2d/xukufu_2/xukufu_2.model3.json",
+   "thumb": "shipmodels/xukufu_2.png"
+  },
+  "xukufu_3": {
+   "name": "絮库夫 · Loisirs balnéaires",
+   "model": "live2d/xukufu_3/xukufu_3.model3.json",
+   "thumb": "shipmodels/xukufu_3.png"
+  },
+  "xukufu_3_hx": {
+   "name": "絮库夫 · Loisirs balnéaires（差分）",
+   "model": "live2d/xukufu_3_hx/xukufu_3_hx.model3.json",
+   "thumb": "shipmodels/xukufu_3.png"
+  },
+  "yanusi_3": {
+   "name": "雅努斯 · 万圣喵喵惊悚夜",
+   "model": "live2d/yanusi_3/yanusi_3.model3.json",
+   "thumb": "shipmodels/yanusi_3.png"
+  },
+  "yibei_3": {
+   "name": "{namecode:468} · 清纯的“反派小姐”？",
+   "model": "live2d/yibei_3/yibei_3.model3.json",
+   "thumb": "shipmodels/yibei_3.png"
+  },
+  "yichui_2": {
+   "name": "{namecode:152} · 永梦的青女",
+   "model": "live2d/yichui_2/yichui_2.model3.json",
+   "thumb": "shipmodels/yichui_2.png"
+  },
+  "yilishabai_6": {
+   "name": "伊丽莎白女王 · Maid·My·Highness",
+   "model": "live2d/yilishabai_6/yilishabai_6.model3.json",
+   "thumb": "shipmodels/yilishabai_6.png"
+  },
+  "yingrui_3": {
+   "name": "应瑞 · 松戏梅·其上",
+   "model": "live2d/yingrui_3/yingrui_3.model3.json",
+   "thumb": "shipmodels/yingrui_3.png"
+  },
+  "yingxianzuo_3": {
+   "name": "英仙座 · 慵懒的春光",
+   "model": "live2d/yingxianzuo_3/yingxianzuo_3.model3.json",
+   "thumb": "shipmodels/yingxianzuo_3.png"
+  },
+  "yunxian_2": {
+   "name": "{namecode:294} · 嬉水碧海",
+   "model": "live2d/yunxian_2/yunxian_2.model3.json",
+   "thumb": "shipmodels/yunxian_2.png"
+  },
+  "z23": {
+   "name": "{namecode:408}",
+   "model": "live2d/z23/z23.model3.json",
+   "thumb": "shipmodels/z23.png"
+  },
+  "z23_hx": {
+   "name": "{namecode:408}（差分）",
+   "model": "live2d/z23_hx/z23_hx.model3.json",
+   "thumb": "shipmodels/z23.png"
+  },
+  "z46_2": {
+   "name": "z46_2",
+   "model": "live2d/z46_2/z46_2.model3.json",
+   "thumb": "shipmodels/z46_2.png"
+  },
+  "z46_3": {
+   "name": "z46_3",
+   "model": "live2d/z46_3/z46_3.model3.json",
+   "thumb": "shipmodels/z46_3.png"
+  },
+  "z46_4": {
+   "name": "z46_4",
+   "model": "live2d/z46_4/z46_4.model3.json",
+   "thumb": "shipmodels/z46_4.png"
+  },
+  "zhala_2": {
+   "name": "{namecode:526} · 泳池边的“偶遇”",
+   "model": "live2d/zhala_2/zhala_2.model3.json",
+   "thumb": "shipmodels/zhala_2.png"
+  },
+  "zhaohe_3": {
+   "name": "肇和 · 松戏梅·其下",
+   "model": "live2d/zhaohe_3/zhaohe_3.model3.json",
+   "thumb": "shipmodels/zhaohe_3.png"
+  }
+ }
+}

@@ -24,14 +24,32 @@ SCRIPT = VERGE / 'profiles' / 'Script.js'
 BACKUP = ROOT / 'original-Script.js'
 NODE = 'MajsoulMax-Local'
 GROUP = 'MajsoulMax-Steam'
-UPSTREAM = '🔰 选择节点'
-GAME = Path(r'D:\SteamLibrary\steamapps\common\MahjongSoul\Jantama_MahjongSoul.exe')
+UPSTREAM = 'DIRECT'
+GAME = Path('Jantama_MahjongSoul.exe')
 RULES = [
     f'PROCESS-NAME,MajsoulMax.exe,{UPSTREAM}',
     f'AND,((PROCESS-NAME,Jantama_MahjongSoul.exe),(NETWORK,TCP)),{GROUP}',
     f'AND,((PROCESS-NAME,雀魂麻將.exe),(NETWORK,TCP)),{GROUP}',
 ]
 HIDDEN = subprocess.CREATE_NO_WINDOW
+SETTINGS = ROOT / 'launcher.json'
+
+
+def configure():
+    global VERGE, SCRIPT, UPSTREAM, GAME, RULES
+    data = json.loads(SETTINGS.read_text(encoding='utf-8')) if SETTINGS.exists() else {}
+    VERGE = Path(data.get('verge', str(Path(os.environ['APPDATA']) / 'io.github.clash-verge-rev.clash-verge-rev')))
+    SCRIPT = VERGE / 'profiles' / 'Script.js'
+    UPSTREAM = data.get('upstream', 'DIRECT')
+    GAME = Path(data.get('game', 'Jantama_MahjongSoul.exe'))
+    RULES = [
+        f'PROCESS-NAME,MajsoulMax.exe,{UPSTREAM}',
+        f'AND,((PROCESS-NAME,Jantama_MahjongSoul.exe),(NETWORK,TCP)),{GROUP}',
+        f'AND,((PROCESS-NAME,雀魂麻將.exe),(NETWORK,TCP)),{GROUP}',
+    ]
+
+
+configure()
 
 
 def read_yaml(path):
@@ -102,8 +120,10 @@ def reload_config(enabled, previous=None):
     selections = {name: p['now'] for name, p in api('/proxies')['proxies'].items()
                   if p.get('type') == 'Selector' and 'now' in p and name != GROUP}
     config = transform(read_yaml(VERGE / 'clash-verge.yaml'), enabled)
-    if enabled and UPSTREAM not in {p.get('name') for p in config.get('proxy-groups', [])}:
-        raise RuntimeError(f'当前 Clash 订阅没有 {UPSTREAM} 代理组，请切回配置时使用的订阅。')
+    names = {'DIRECT', *[p.get('name') for p in config.get('proxy-groups', [])],
+             *[p.get('name') for p in config.get('proxies', [])]}
+    if enabled and UPSTREAM not in names:
+        raise RuntimeError(f'当前 Clash 配置中没有 {UPSTREAM}，请在连接设置中重新选择上游。')
     if previous:
         config['mode'] = previous['mode']
         config.setdefault('tun', {})['enable'] = previous['tun_enabled']

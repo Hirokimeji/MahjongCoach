@@ -15,6 +15,7 @@ from PySide6.QtWidgets import (QApplication, QBoxLayout, QHBoxLayout, QInputDial
 import backend
 from backgrounds import BackgroundPlayer, Collection, DEFAULT, Gallery
 from presenter import opponent_rows, present
+from connection_settings import edit_connection
 from strategy import MODES, normalized, risk_label, tile_name
 from studio import (ROOT, THEMES, Hero, TileGrid, Wallpaper, button, label, panel, scaled_image, stylesheet, tile_path)
 
@@ -83,7 +84,7 @@ class Coach(QMainWindow):
         saved_theme = self.appearance.value('theme', '深色', type=str)
         self.theme = saved_theme if saved_theme in THEMES else '深色'
         self.risk_threshold = self.appearance.value('riskThreshold', 5, type=int)
-        self.coach_only = self.appearance.value('coachOnly', False, type=bool)
+        self.coach_only = self.appearance.value('coachOnly', True, type=bool)
         self.update_pending = False
         self.demo = self.closing = False
         self.process = self.action = self.last_error = None
@@ -116,6 +117,7 @@ class Coach(QMainWindow):
             self.themes[name] = b
             top_row.addWidget(b)
         self.theme_menu = QMenu(self)
+        self.theme_menu.addAction('连接设置',self.open_connection)
         for name in THEMES:
             self.theme_menu.addAction(name, lambda checked=False,k=name: self.set_theme(k))
         self.theme_picker = button('主题', self.show_theme_menu, 'theme')
@@ -182,6 +184,7 @@ class Coach(QMainWindow):
         self.release_status = label('', 'muted', True)
         nav.addWidget(self.release_status)
         nav.addWidget(button('使用说明',self.open_guide))
+        nav.addWidget(button('连接设置',self.open_connection))
         self.launch = button('启动雀魂',self.toggle, 'launch')
         self.only_button = button('',self.set_coach_only,checkable=True)
         nav.addWidget(self.only_button)
@@ -477,6 +480,12 @@ class Coach(QMainWindow):
     def open_guide():
         os.startfile(str(ROOT/'使用说明.md'))
 
+    def open_connection(self):
+        if self.process or self.needs_restore():
+            QMessageBox.information(self,'连接设置','请先停止并恢复，再修改连接设置。')
+            return
+        edit_connection(self)
+
     def switch_mode(self,key):
         self.strategy = key
         self.render(self.latest)
@@ -645,6 +654,9 @@ class Coach(QMainWindow):
 
     def toggle(self):
         if not self.process:
+            if not self.needs_restore() and not backend.max_launcher.SETTINGS.exists():
+                if not edit_connection(self):
+                    return
             self.run('stop' if self.needs_restore() else 'start')
 
     def run(self,action):
@@ -751,6 +763,8 @@ def main():
             window = Coach()
             window.schedule_update()
             window.show()
+            if not backend.max_launcher.SETTINGS.exists():
+                QTimer.singleShot(0,window.open_connection)
             app.exec()
         except Exception as error:
             QMessageBox.critical(None,'雀魂新手教练',str(error))

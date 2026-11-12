@@ -1,0 +1,8 @@
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: info
+proxies: []
+proxy-groups: []
+rules:
+  - MATCH,DIRECT

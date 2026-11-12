@@ -11,3 +11,6 @@ app/
 model-runtime/
 spine-runtime/
 *.zip
+dist/
+release-deps/
+MajsoulMax-Steam/launcher.json
