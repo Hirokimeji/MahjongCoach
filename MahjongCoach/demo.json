@@ -1,0 +1,1516 @@
+{
+  "assessed_opponents": [
+    "下家",
+    "对家",
+    "上家"
+  ],
+  "best_index": 0,
+  "candidates": [
+    {
+      "dama_point": 0,
+      "dama_ukeire": 0,
+      "discard_dora": false,
+      "furiten": 0,
+      "name": "中",
+      "next_ukeire": 6.315789473684211,
+      "open_hand": false,
+      "open_tiles": null,
+      "part_wait": false,
+      "riichi_point": 0,
+      "risk": 3.022911832946636,
+      "shanten": 1,
+      "speed": 25.429021241525074,
+      "tile": "7z",
+      "ukeire": 19,
+      "waits": [
+        {
+          "remaining": 3,
+          "tile": "2m"
+        },
+        {
+          "remaining": 4,
+          "tile": "3m"
+        },
+        {
+          "remaining": 3,
+          "tile": "5m"
+        },
+        {
+          "remaining": 4,
+          "tile": "6m"
+        },
+        {
+          "remaining": 2,
+          "tile": "4s"
+        },
+        {
+          "remaining": 3,
+          "tile": "7s"
+        }
+      ],
+      "win_rate": 0,
+      "yaku": "[立直 平和 断幺]"
+    },
+    {
+      "dama_point": 0,
+      "dama_ukeire": 0,
+      "discard_dora": false,
+      "furiten": 0,
+      "name": "2万",
+      "next_ukeire": 6.5,
+      "open_hand": false,
+      "open_tiles": null,
+      "part_wait": false,
+      "riichi_point": 0,
+      "risk": 6.765564578499614,
+      "shanten": 1,
+      "speed": 23.468678869502735,
+      "tile": "2m",
+      "ukeire": 16,
+      "waits": [
+        {
+          "remaining": 4,
+          "tile": "3m"
+        },
+        {
+          "remaining": 4,
+          "tile": "6m"
+        },
+        {
+          "remaining": 2,
+          "tile": "4s"
+        },
+        {
+          "remaining": 3,
+          "tile": "7s"
+        },
+        {
+          "remaining": 3,
+          "tile": "7z"
+        }
+      ],
+      "win_rate": 0,
+      "yaku": "[立直 平和 断幺]"
+    },
+    {
+      "dama_point": 0,
+      "dama_ukeire": 0,
+      "discard_dora": false,
+      "furiten": 0,
+      "name": "4索",
+      "next_ukeire": 5.647058823529412,
+      "open_hand": false,
+      "open_tiles": null,
+      "part_wait": false,
+      "riichi_point": 0,
+      "risk": 0,
+      "shanten": 1,
+      "speed": 21.67491993474134,
+      "tile": "4s",
+      "ukeire": 17,
+      "waits": [
+        {
+          "remaining": 3,
+          "tile": "2m"
+        },
+        {
+          "remaining": 4,
+          "tile": "3m"
+        },
+        {
+          "remaining": 3,
+          "tile": "5m"
+        },
+        {
+          "remaining": 4,
+          "tile": "6m"
+        },
+        {
+          "remaining": 3,
+          "tile": "7z"
+        }
+      ],
+      "win_rate": 0,
+      "yaku": "[立直 平和 断幺]"
+    },
+    {
+      "dama_point": 0,
+      "dama_ukeire": 0,
+      "discard_dora": false,
+      "furiten": 0,
+      "name": "7索",
+      "next_ukeire": 5.647058823529412,
+      "open_hand": false,
+      "open_tiles": null,
+      "part_wait": false,
+      "riichi_point": 0,
+      "risk": 8.06109822119103,
+      "shanten": 1,
+      "speed": 21.67491993474134,
+      "tile": "7s",
+      "ukeire": 17,
+      "waits": [
+        {
+          "remaining": 3,
+          "tile": "2m"
+        },
+        {
+          "remaining": 4,
+          "tile": "3m"
+        },
+        {
+          "remaining": 3,
+          "tile": "5m"
+        },
+        {
+          "remaining": 4,
+          "tile": "6m"
+        },
+        {
+          "remaining": 3,
+          "tile": "7z"
+        }
+      ],
+      "win_rate": 0,
+      "yaku": "[立直 平和 断幺]"
+    },
+    {
+      "dama_point": 0,
+      "dama_ukeire": 0,
+      "discard_dora": false,
+      "furiten": 0,
+      "name": "5万",
+      "next_ukeire": 4.333333333333333,
+      "open_hand": false,
+      "open_tiles": null,
+      "part_wait": false,
+      "riichi_point": 0,
+      "risk": 8.205046403712297,
+      "shanten": 1,
+      "speed": 13.659228756766417,
+      "tile": "5m",
+      "ukeire": 12,
+      "waits": [
+        {
+          "remaining": 4,
+          "tile": "3m"
+        },
+        {
+          "remaining": 2,
+          "tile": "4s"
+        },
+        {
+          "remaining": 3,
+          "tile": "7s"
+        },
+        {
+          "remaining": 3,
+          "tile": "7z"
+        }
+      ],
+      "win_rate": 0,
+      "yaku": "[立直 断幺]"
+    },
+    {
+      "dama_point": 0,
+      "dama_ukeire": 0,
+      "discard_dora": false,
+      "furiten": 0,
+      "name": "4万",
+      "next_ukeire": 20.418181818181818,
+      "open_hand": false,
+      "open_tiles": null,
+      "part_wait": false,
+      "riichi_point": 0,
+      "risk": 8.205046403712297,
+      "shanten": 2,
+      "speed": 20.096578625095866,
+      "tile": "4m",
+      "ukeire": 55,
+      "waits": [
+        {
+          "remaining": 4,
+          "tile": "1m"
+        },
+        {
+          "remaining": 3,
+          "tile": "2m"
+        },
+        {
+          "remaining": 4,
+          "tile": "3m"
+        },
+        {
+          "remaining": 3,
+          "tile": "4m"
+        },
+        {
+          "remaining": 3,
+          "tile": "5m"
+        },
+        {
+          "remaining": 4,
+          "tile": "6m"
+        },
+        {
+          "remaining": 4,
+          "tile": "7m"
+        },
+        {
+          "remaining": 4,
+          "tile": "2s"
+        },
+        {
+          "remaining": 4,
+          "tile": "3s"
+        },
+        {
+          "remaining": 2,
+          "tile": "4s"
+        },
+        {
+          "remaining": 3,
+          "tile": "5s"
+        },
+        {
+          "remaining": 3,
+          "tile": "6s"
+        },
+        {
+          "remaining": 3,
+          "tile": "7s"
+        },
+        {
+          "remaining": 4,
+          "tile": "8s"
+        },
+        {
+          "remaining": 4,
+          "tile": "9s"
+        },
+        {
+          "remaining": 3,
+          "tile": "7z"
+        }
+      ],
+      "win_rate": 0,
+      "yaku": "[立直 平和 三色 断幺 役牌]"
+    },
+    {
+      "dama_point": 0,
+      "dama_ukeire": 0,
+      "discard_dora": false,
+      "furiten": 0,
+      "name": "2饼",
+      "next_ukeire": 18.3125,
+      "open_hand": false,
+      "open_tiles": null,
+      "part_wait": false,
+      "riichi_point": 0,
+      "risk": 6.765564578499614,
+      "shanten": 2,
+      "speed": 16.887248614727827,
+      "tile": "2p",
+      "ukeire": 32,
+      "waits": [
+        {
+          "remaining": 3,
+          "tile": "2m"
+        },
+        {
+          "remaining": 4,
+          "tile": "3m"
+        },
+        {
+          "remaining": 3,
+          "tile": "5m"
+        },
+        {
+          "remaining": 4,
+          "tile": "6m"
+        },
+        {
+          "remaining": 3,
+          "tile": "2p"
+        },
+        {
+          "remaining": 3,
+          "tile": "5p"
+        },
+        {
+          "remaining": 4,
+          "tile": "8p"
+        },
+        {
+          "remaining": 2,
+          "tile": "4s"
+        },
+        {
+          "remaining": 3,
+          "tile": "7s"
+        },
+        {
+          "remaining": 3,
+          "tile": "7z"
+        }
+      ],
+      "win_rate": 0,
+      "yaku": "[立直 平和 断幺]"
+    },
+    {
+      "dama_point": 0,
+      "dama_ukeire": 0,
+      "discard_dora": false,
+      "furiten": 0,
+      "name": "7饼",
+      "next_ukeire": 18.3125,
+      "open_hand": false,
+      "open_tiles": null,
+      "part_wait": false,
+      "riichi_point": 0,
+      "risk": 8.348994586233566,
+      "shanten": 2,
+      "speed": 16.887248614727827,
+      "tile": "7p",
+      "ukeire": 32,
+      "waits": [
+        {
+          "remaining": 3,
+          "tile": "2m"
+        },
+        {
+          "remaining": 4,
+          "tile": "3m"
+        },
+        {
+          "remaining": 3,
+          "tile": "5m"
+        },
+        {
+          "remaining": 4,
+          "tile": "6m"
+        },
+        {
+          "remaining": 4,
+          "tile": "1p"
+        },
+        {
+          "remaining": 3,
+          "tile": "4p"
+        },
+        {
+          "remaining": 3,
+          "tile": "7p"
+        },
+        {
+          "remaining": 2,
+          "tile": "4s"
+        },
+        {
+          "remaining": 3,
+          "tile": "7s"
+        },
+        {
+          "remaining": 3,
+          "tile": "7z"
+        }
+      ],
+      "win_rate": 0,
+      "yaku": "[立直 平和 三色 断幺]"
+    },
+    {
+      "dama_point": 0,
+      "dama_ukeire": 0,
+      "discard_dora": false,
+      "furiten": 0,
+      "name": "5饼",
+      "next_ukeire": 15.96551724137931,
+      "open_hand": false,
+      "open_tiles": null,
+      "part_wait": false,
+      "riichi_point": 0,
+      "risk": 8.205046403712297,
+      "shanten": 2,
+      "speed": 15.13619139200612,
+      "tile": "5p",
+      "ukeire": 29,
+      "waits": [
+        {
+          "remaining": 3,
+          "tile": "2m"
+        },
+        {
+          "remaining": 4,
+          "tile": "3m"
+        },
+        {
+          "remaining": 3,
+          "tile": "5m"
+        },
+        {
+          "remaining": 4,
+          "tile": "6m"
+        },
+        {
+          "remaining": 3,
+          "tile": "5p"
+        },
+        {
+          "remaining": 4,
+          "tile": "8p"
+        },
+        {
+          "remaining": 2,
+          "tile": "4s"
+        },
+        {
+          "remaining": 3,
+          "tile": "7s"
+        },
+        {
+          "remaining": 3,
+          "tile": "7z"
+        }
+      ],
+      "win_rate": 0,
+      "yaku": "[立直 平和 断幺]"
+    },
+    {
+      "dama_point": 0,
+      "dama_ukeire": 0,
+      "discard_dora": false,
+      "furiten": 0,
+      "name": "4饼",
+      "next_ukeire": 15.96551724137931,
+      "open_hand": false,
+      "open_tiles": null,
+      "part_wait": false,
+      "riichi_point": 0,
+      "risk": 8.205046403712297,
+      "shanten": 2,
+      "speed": 15.13619139200612,
+      "tile": "4p",
+      "ukeire": 29,
+      "waits": [
+        {
+          "remaining": 3,
+          "tile": "2m"
+        },
+        {
+          "remaining": 4,
+          "tile": "3m"
+        },
+        {
+          "remaining": 3,
+          "tile": "5m"
+        },
+        {
+          "remaining": 4,
+          "tile": "6m"
+        },
+        {
+          "remaining": 4,
+          "tile": "1p"
+        },
+        {
+          "remaining": 3,
+          "tile": "4p"
+        },
+        {
+          "remaining": 2,
+          "tile": "4s"
+        },
+        {
+          "remaining": 3,
+          "tile": "7s"
+        },
+        {
+          "remaining": 3,
+          "tile": "7z"
+        }
+      ],
+      "win_rate": 0,
+      "yaku": "[立直 平和 断幺]"
+    },
+    {
+      "dama_point": 0,
+      "dama_ukeire": 0,
+      "discard_dora": false,
+      "furiten": 0,
+      "name": "6索",
+      "next_ukeire": 15.413793103448276,
+      "open_hand": false,
+      "open_tiles": null,
+      "part_wait": false,
+      "riichi_point": 0,
+      "risk": 8.205046403712297,
+      "shanten": 2,
+      "speed": 14.832117644865415,
+      "tile": "6s",
+      "ukeire": 29,
+      "waits": [
+        {
+          "remaining": 3,
+          "tile": "2m"
+        },
+        {
+          "remaining": 4,
+          "tile": "3m"
+        },
+        {
+          "remaining": 3,
+          "tile": "5m"
+        },
+        {
+          "remaining": 4,
+          "tile": "6m"
+        },
+        {
+          "remaining": 4,
+          "tile": "3s"
+        },
+        {
+          "remaining": 2,
+          "tile": "4s"
+        },
+        {
+          "remaining": 3,
+          "tile": "6s"
+        },
+        {
+          "remaining": 3,
+          "tile": "7s"
+        },
+        {
+          "remaining": 3,
+          "tile": "7z"
+        }
+      ],
+      "win_rate": 0,
+      "yaku": "[立直 平和 断幺]"
+    },
+    {
+      "dama_point": 0,
+      "dama_ukeire": 0,
+      "discard_dora": false,
+      "furiten": 0,
+      "name": "5索",
+      "next_ukeire": 15.275862068965518,
+      "open_hand": false,
+      "open_tiles": null,
+      "part_wait": false,
+      "riichi_point": 0,
+      "risk": 8.205046403712297,
+      "shanten": 2,
+      "speed": 14.754355290167625,
+      "tile": "5s",
+      "ukeire": 29,
+      "waits": [
+        {
+          "remaining": 3,
+          "tile": "2m"
+        },
+        {
+          "remaining": 4,
+          "tile": "3m"
+        },
+        {
+          "remaining": 3,
+          "tile": "5m"
+        },
+        {
+          "remaining": 4,
+          "tile": "6m"
+        },
+        {
+          "remaining": 2,
+          "tile": "4s"
+        },
+        {
+          "remaining": 3,
+          "tile": "5s"
+        },
+        {
+          "remaining": 3,
+          "tile": "7s"
+        },
+        {
+          "remaining": 4,
+          "tile": "8s"
+        },
+        {
+          "remaining": 3,
+          "tile": "7z"
+        }
+      ],
+      "win_rate": 0,
+      "yaku": "[立直 平和 断幺]"
+    },
+    {
+      "dama_point": 0,
+      "dama_ukeire": 0,
+      "discard_dora": false,
+      "furiten": 0,
+      "name": "6饼",
+      "next_ukeire": 11.96,
+      "open_hand": false,
+      "open_tiles": null,
+      "part_wait": false,
+      "riichi_point": 0,
+      "risk": 8.205046403712297,
+      "shanten": 2,
+      "speed": 11.877731195591979,
+      "tile": "6p",
+      "ukeire": 25,
+      "waits": [
+        {
+          "remaining": 3,
+          "tile": "2m"
+        },
+        {
+          "remaining": 4,
+          "tile": "3m"
+        },
+        {
+          "remaining": 3,
+          "tile": "5m"
+        },
+        {
+          "remaining": 4,
+          "tile": "6m"
+        },
+        {
+          "remaining": 3,
+          "tile": "6p"
+        },
+        {
+          "remaining": 2,
+          "tile": "4s"
+        },
+        {
+          "remaining": 3,
+          "tile": "7s"
+        },
+        {
+          "remaining": 3,
+          "tile": "7z"
+        }
+      ],
+      "win_rate": 0,
+      "yaku": "[立直 平和 断幺]"
+    },
+    {
+      "dama_point": 0,
+      "dama_ukeire": 0,
+      "discard_dora": false,
+      "furiten": 0,
+      "name": "3饼",
+      "next_ukeire": 11.96,
+      "open_hand": false,
+      "open_tiles": null,
+      "part_wait": false,
+      "riichi_point": 0,
+      "risk": 8.348994586233566,
+      "shanten": 2,
+      "speed": 11.877731195591979,
+      "tile": "3p",
+      "ukeire": 25,
+      "waits": [
+        {
+          "remaining": 3,
+          "tile": "2m"
+        },
+        {
+          "remaining": 4,
+          "tile": "3m"
+        },
+        {
+          "remaining": 3,
+          "tile": "5m"
+        },
+        {
+          "remaining": 4,
+          "tile": "6m"
+        },
+        {
+          "remaining": 3,
+          "tile": "3p"
+        },
+        {
+          "remaining": 2,
+          "tile": "4s"
+        },
+        {
+          "remaining": 3,
+          "tile": "7s"
+        },
+        {
+          "remaining": 3,
+          "tile": "7z"
+        }
+      ],
+      "win_rate": 0,
+      "yaku": "[立直 平和 断幺]"
+    }
+  ],
+  "defence": [
+    {
+      "risk": 0,
+      "tile": "4s"
+    },
+    {
+      "risk": 3.022911832946636,
+      "tile": "7z"
+    },
+    {
+      "risk": 6.765564578499614,
+      "tile": "2m"
+    },
+    {
+      "risk": 6.765564578499614,
+      "tile": "2p"
+    },
+    {
+      "risk": 8.06109822119103,
+      "tile": "7s"
+    },
+    {
+      "risk": 8.205046403712297,
+      "tile": "4m"
+    },
+    {
+      "risk": 8.205046403712297,
+      "tile": "5m"
+    },
+    {
+      "risk": 8.205046403712297,
+      "tile": "4p"
+    },
+    {
+      "risk": 8.205046403712297,
+      "tile": "5p"
+    },
+    {
+      "risk": 8.205046403712297,
+      "tile": "6p"
+    },
+    {
+      "risk": 8.205046403712297,
+      "tile": "5s"
+    },
+    {
+      "risk": 8.205046403712297,
+      "tile": "6s"
+    },
+    {
+      "risk": 8.348994586233566,
+      "tile": "3p"
+    },
+    {
+      "risk": 8.348994586233566,
+      "tile": "7p"
+    }
+  ],
+  "engine": "EndlessCheng/mahjong-helper",
+  "forecast": {
+    "cut": "7z",
+    "draws": 6,
+    "trials": 160,
+    "wins": 14
+  },
+  "hand": [
+    "2m",
+    "4m",
+    "5m",
+    "2p",
+    "3p",
+    "4p",
+    "5p",
+    "6p",
+    "7p",
+    "4s",
+    "5s",
+    "6s",
+    "7s",
+    "7z"
+  ],
+  "honba": 0,
+  "kind": "discard",
+  "legal_operations": {
+    "seat": 0,
+    "operation_list": [
+      {
+        "type": 1,
+        "combination": null
+      }
+    ]
+  },
+  "melds": [],
+  "open_hand": false,
+  "opponents": [
+    {
+      "name": "下家",
+      "wind": "1z",
+      "riichi": false,
+      "tenpai": 1,
+      "risk": {
+        "1m": 0.033999999999999996,
+        "1p": 0.033999999999999996,
+        "1z": 0.021,
+        "2m": 0.04700000000000001,
+        "2p": 0.04700000000000001,
+        "2s": 0.04700000000000001,
+        "2z": 0.023999999999999997,
+        "3m": 0.058,
+        "3p": 0.058,
+        "3s": 0.058,
+        "3z": 0.023999999999999997,
+        "4m": 0.056999999999999995,
+        "4p": 0.056999999999999995,
+        "4z": 0.023999999999999997,
+        "5m": 0.056999999999999995,
+        "5p": 0.056999999999999995,
+        "5s": 0.056999999999999995,
+        "5z": 0.021,
+        "6m": 0.056999999999999995,
+        "6p": 0.025,
+        "6s": 0.056999999999999995,
+        "6z": 0.021,
+        "7m": 0.058,
+        "7p": 0.058,
+        "7s": 0.055999999999999994,
+        "7z": 0.021,
+        "8m": 0.04700000000000001,
+        "8p": 0.04700000000000001,
+        "8s": 0.04700000000000001,
+        "9m": 0.033999999999999996,
+        "9s": 0.033999999999999996
+      }
+    },
+    {
+      "name": "对家",
+      "wind": "2z",
+      "riichi": false,
+      "tenpai": 1,
+      "risk": {
+        "1m": 0.033999999999999996,
+        "1p": 0.033999999999999996,
+        "1z": 0.021,
+        "2m": 0.04700000000000001,
+        "2p": 0.04700000000000001,
+        "2s": 0.04700000000000001,
+        "2z": 0.021,
+        "3m": 0.058,
+        "3p": 0.058,
+        "3s": 0.058,
+        "3z": 0.023999999999999997,
+        "4m": 0.056999999999999995,
+        "4p": 0.056999999999999995,
+        "4z": 0.023999999999999997,
+        "5m": 0.056999999999999995,
+        "5p": 0.056999999999999995,
+        "5s": 0.056999999999999995,
+        "5z": 0.021,
+        "6m": 0.056999999999999995,
+        "6p": 0.056999999999999995,
+        "6s": 0.056999999999999995,
+        "6z": 0.021,
+        "7m": 0.058,
+        "7p": 0.058,
+        "7s": 0.055999999999999994,
+        "7z": 0.021,
+        "8m": 0.04700000000000001,
+        "8p": 0.04700000000000001,
+        "8s": 0.04700000000000001,
+        "9m": 0.033999999999999996,
+        "9p": 0.033999999999999996,
+        "9s": 0.033999999999999996
+      }
+    },
+    {
+      "name": "上家",
+      "wind": "3z",
+      "riichi": true,
+      "tenpai": 100,
+      "risk": {
+        "1m": 3.4000000000000004,
+        "1p": 3.4000000000000004,
+        "1s": 1.7999999999999998,
+        "1z": 2.1,
+        "2m": 4.7,
+        "2p": 4.7,
+        "2s": 4.7,
+        "2z": 2.4,
+        "3m": 5.800000000000001,
+        "3p": 5.800000000000001,
+        "3s": 5.800000000000001,
+        "3z": 2.1,
+        "4m": 5.7,
+        "4p": 5.7,
+        "4z": 2.4,
+        "5m": 5.7,
+        "5p": 5.7,
+        "5s": 5.7,
+        "5z": 2.1,
+        "6m": 5.7,
+        "6p": 5.7,
+        "6s": 5.7,
+        "6z": 2.1,
+        "7m": 5.800000000000001,
+        "7p": 5.800000000000001,
+        "7s": 5.6000000000000005,
+        "7z": 2.1,
+        "8m": 4.7,
+        "8p": 4.7,
+        "8s": 4.7,
+        "9m": 3.4000000000000004,
+        "9p": 3.4000000000000004,
+        "9s": 3.4000000000000004
+      }
+    }
+  ],
+  "own_discards": 0,
+  "players": 4,
+  "riichi_opponents": [
+    "上家"
+  ],
+  "ron_risk": {
+    "2m": 4.789560948229998,
+    "2p": 4.789560948229998,
+    "3p": 5.909240311120012,
+    "4m": 5.807471361929995,
+    "4p": 5.807471361929995,
+    "4s": 0,
+    "5m": 5.807471361929995,
+    "5p": 5.807471361929995,
+    "5s": 5.807471361929995,
+    "6p": 5.777312562249993,
+    "6s": 5.807471361929995,
+    "7p": 5.909240311120012,
+    "7s": 5.705698396160008,
+    "7z": 2.1411136826100075
+  },
+  "round": 1,
+  "round_wind": "1z",
+  "seat_wind": "4z",
+  "self_seat": 0,
+  "special_choices": [],
+  "unseen": [
+    4,
+    3,
+    4,
+    3,
+    3,
+    4,
+    4,
+    4,
+    3,
+    4,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    4,
+    3,
+    3,
+    4,
+    4,
+    2,
+    3,
+    3,
+    3,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    3
+  ],
+  "waits_by_cut": {
+    "2m": [
+      {
+        "remaining": 4,
+        "tile": "3m"
+      },
+      {
+        "remaining": 4,
+        "tile": "6m"
+      },
+      {
+        "remaining": 2,
+        "tile": "4s"
+      },
+      {
+        "remaining": 3,
+        "tile": "7s"
+      },
+      {
+        "remaining": 3,
+        "tile": "7z"
+      }
+    ],
+    "2p": [
+      {
+        "remaining": 3,
+        "tile": "2m"
+      },
+      {
+        "remaining": 4,
+        "tile": "3m"
+      },
+      {
+        "remaining": 3,
+        "tile": "5m"
+      },
+      {
+        "remaining": 4,
+        "tile": "6m"
+      },
+      {
+        "remaining": 3,
+        "tile": "2p"
+      },
+      {
+        "remaining": 3,
+        "tile": "5p"
+      },
+      {
+        "remaining": 4,
+        "tile": "8p"
+      },
+      {
+        "remaining": 2,
+        "tile": "4s"
+      },
+      {
+        "remaining": 3,
+        "tile": "7s"
+      },
+      {
+        "remaining": 3,
+        "tile": "7z"
+      }
+    ],
+    "3p": [
+      {
+        "remaining": 3,
+        "tile": "2m"
+      },
+      {
+        "remaining": 4,
+        "tile": "3m"
+      },
+      {
+        "remaining": 3,
+        "tile": "5m"
+      },
+      {
+        "remaining": 4,
+        "tile": "6m"
+      },
+      {
+        "remaining": 3,
+        "tile": "3p"
+      },
+      {
+        "remaining": 2,
+        "tile": "4s"
+      },
+      {
+        "remaining": 3,
+        "tile": "7s"
+      },
+      {
+        "remaining": 3,
+        "tile": "7z"
+      }
+    ],
+    "4m": [
+      {
+        "remaining": 4,
+        "tile": "1m"
+      },
+      {
+        "remaining": 3,
+        "tile": "2m"
+      },
+      {
+        "remaining": 4,
+        "tile": "3m"
+      },
+      {
+        "remaining": 3,
+        "tile": "4m"
+      },
+      {
+        "remaining": 3,
+        "tile": "5m"
+      },
+      {
+        "remaining": 4,
+        "tile": "6m"
+      },
+      {
+        "remaining": 4,
+        "tile": "7m"
+      },
+      {
+        "remaining": 4,
+        "tile": "2s"
+      },
+      {
+        "remaining": 4,
+        "tile": "3s"
+      },
+      {
+        "remaining": 2,
+        "tile": "4s"
+      },
+      {
+        "remaining": 3,
+        "tile": "5s"
+      },
+      {
+        "remaining": 3,
+        "tile": "6s"
+      },
+      {
+        "remaining": 3,
+        "tile": "7s"
+      },
+      {
+        "remaining": 4,
+        "tile": "8s"
+      },
+      {
+        "remaining": 4,
+        "tile": "9s"
+      },
+      {
+        "remaining": 3,
+        "tile": "7z"
+      }
+    ],
+    "4p": [
+      {
+        "remaining": 3,
+        "tile": "2m"
+      },
+      {
+        "remaining": 4,
+        "tile": "3m"
+      },
+      {
+        "remaining": 3,
+        "tile": "5m"
+      },
+      {
+        "remaining": 4,
+        "tile": "6m"
+      },
+      {
+        "remaining": 4,
+        "tile": "1p"
+      },
+      {
+        "remaining": 3,
+        "tile": "4p"
+      },
+      {
+        "remaining": 2,
+        "tile": "4s"
+      },
+      {
+        "remaining": 3,
+        "tile": "7s"
+      },
+      {
+        "remaining": 3,
+        "tile": "7z"
+      }
+    ],
+    "4s": [
+      {
+        "remaining": 3,
+        "tile": "2m"
+      },
+      {
+        "remaining": 4,
+        "tile": "3m"
+      },
+      {
+        "remaining": 3,
+        "tile": "5m"
+      },
+      {
+        "remaining": 4,
+        "tile": "6m"
+      },
+      {
+        "remaining": 3,
+        "tile": "7z"
+      }
+    ],
+    "5m": [
+      {
+        "remaining": 4,
+        "tile": "3m"
+      },
+      {
+        "remaining": 2,
+        "tile": "4s"
+      },
+      {
+        "remaining": 3,
+        "tile": "7s"
+      },
+      {
+        "remaining": 3,
+        "tile": "7z"
+      }
+    ],
+    "5p": [
+      {
+        "remaining": 3,
+        "tile": "2m"
+      },
+      {
+        "remaining": 4,
+        "tile": "3m"
+      },
+      {
+        "remaining": 3,
+        "tile": "5m"
+      },
+      {
+        "remaining": 4,
+        "tile": "6m"
+      },
+      {
+        "remaining": 3,
+        "tile": "5p"
+      },
+      {
+        "remaining": 4,
+        "tile": "8p"
+      },
+      {
+        "remaining": 2,
+        "tile": "4s"
+      },
+      {
+        "remaining": 3,
+        "tile": "7s"
+      },
+      {
+        "remaining": 3,
+        "tile": "7z"
+      }
+    ],
+    "5s": [
+      {
+        "remaining": 3,
+        "tile": "2m"
+      },
+      {
+        "remaining": 4,
+        "tile": "3m"
+      },
+      {
+        "remaining": 3,
+        "tile": "5m"
+      },
+      {
+        "remaining": 4,
+        "tile": "6m"
+      },
+      {
+        "remaining": 2,
+        "tile": "4s"
+      },
+      {
+        "remaining": 3,
+        "tile": "5s"
+      },
+      {
+        "remaining": 3,
+        "tile": "7s"
+      },
+      {
+        "remaining": 4,
+        "tile": "8s"
+      },
+      {
+        "remaining": 3,
+        "tile": "7z"
+      }
+    ],
+    "6p": [
+      {
+        "remaining": 3,
+        "tile": "2m"
+      },
+      {
+        "remaining": 4,
+        "tile": "3m"
+      },
+      {
+        "remaining": 3,
+        "tile": "5m"
+      },
+      {
+        "remaining": 4,
+        "tile": "6m"
+      },
+      {
+        "remaining": 3,
+        "tile": "6p"
+      },
+      {
+        "remaining": 2,
+        "tile": "4s"
+      },
+      {
+        "remaining": 3,
+        "tile": "7s"
+      },
+      {
+        "remaining": 3,
+        "tile": "7z"
+      }
+    ],
+    "6s": [
+      {
+        "remaining": 3,
+        "tile": "2m"
+      },
+      {
+        "remaining": 4,
+        "tile": "3m"
+      },
+      {
+        "remaining": 3,
+        "tile": "5m"
+      },
+      {
+        "remaining": 4,
+        "tile": "6m"
+      },
+      {
+        "remaining": 4,
+        "tile": "3s"
+      },
+      {
+        "remaining": 2,
+        "tile": "4s"
+      },
+      {
+        "remaining": 3,
+        "tile": "6s"
+      },
+      {
+        "remaining": 3,
+        "tile": "7s"
+      },
+      {
+        "remaining": 3,
+        "tile": "7z"
+      }
+    ],
+    "7p": [
+      {
+        "remaining": 3,
+        "tile": "2m"
+      },
+      {
+        "remaining": 4,
+        "tile": "3m"
+      },
+      {
+        "remaining": 3,
+        "tile": "5m"
+      },
+      {
+        "remaining": 4,
+        "tile": "6m"
+      },
+      {
+        "remaining": 4,
+        "tile": "1p"
+      },
+      {
+        "remaining": 3,
+        "tile": "4p"
+      },
+      {
+        "remaining": 3,
+        "tile": "7p"
+      },
+      {
+        "remaining": 2,
+        "tile": "4s"
+      },
+      {
+        "remaining": 3,
+        "tile": "7s"
+      },
+      {
+        "remaining": 3,
+        "tile": "7z"
+      }
+    ],
+    "7s": [
+      {
+        "remaining": 3,
+        "tile": "2m"
+      },
+      {
+        "remaining": 4,
+        "tile": "3m"
+      },
+      {
+        "remaining": 3,
+        "tile": "5m"
+      },
+      {
+        "remaining": 4,
+        "tile": "6m"
+      },
+      {
+        "remaining": 3,
+        "tile": "7z"
+      }
+    ],
+    "7z": [
+      {
+        "remaining": 3,
+        "tile": "2m"
+      },
+      {
+        "remaining": 4,
+        "tile": "3m"
+      },
+      {
+        "remaining": 3,
+        "tile": "5m"
+      },
+      {
+        "remaining": 4,
+        "tile": "6m"
+      },
+      {
+        "remaining": 2,
+        "tile": "4s"
+      },
+      {
+        "remaining": 3,
+        "tile": "7s"
+      }
+    ]
+  }
+}

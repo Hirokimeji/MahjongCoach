@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.log
+*.lock
+外观.ini
+session.json
+角色皮肤.json
+launcher-state.json
+背景收藏/
+app/
+model-runtime/
+spine-runtime/
+*.zip
